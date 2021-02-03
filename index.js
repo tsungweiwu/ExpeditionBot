@@ -112,7 +112,7 @@ function message() {
 
 client.on('message', message => {
     if (message.content === '.dansignal') {
-        return message.channel.send('Sending the Dan Signal! Calling @nub!')
+        return message.channel.send('Sending the Dan Signal! Calling <@282966925519093761>!')
     }
 
     morningExpeds.schedule();
