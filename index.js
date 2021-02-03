@@ -48,68 +48,77 @@ function message() {
             message.react(client.emojis.cache.find(emoji => emoji.name === "152"))).then(
             message.react(client.emojis.cache.find(emoji => emoji.name === "302"))).then(
             message.react(client.emojis.cache.find(emoji => emoji.name === "452"))).then(
-            message.react(client.emojis.cache.find(emoji => emoji.name === "Skip"))).then(
-                schedule.scheduleJob('r-job', '59 * * * *', function() {
-                    var find_max = {
-                        'onTime': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "OnTime")).count,
-                        'fifteen': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "152")).count,
-                        'thirty': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "302")).count,
-                        'fourtyf': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "452")).count,
-                        'skip': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "Skip")).count
-                    }
-                    var max;
-                    for (var h in find_max) {
-                        if (!max || (find_max[h] > find_max[max])) {
-                            max = h;
-                        }
-                    }
-
-                    switch (max) {
-                        case 'onTime': {
-                            schedule.scheduleJob('alert-job', '0 * * * *', function() {
-                                alertExpeds()
-                                schedule.cancelJob()
-                            })
-                            break;
-                        }
-
-                        case 'fifteen': {
-                            schedule.scheduleJob('alert-job', '15 * * * *', function() {
-                                alertExpeds()
-                                schedule.cancelJob()
-                            })
-                            break;
-                        }
-
-                        case 'thirty': {
-                            schedule.scheduleJob('alert-job', '30 * * * *', function() {
-                                alertExpeds()
-                                schedule.cancelJob()
-                            })
-                            break;
-                        }
-
-                        case 'fourtyf': {
-                            schedule.scheduleJob('alert-job', '45 * * * *', function() {
-                                alertExpeds()
-                                schedule.cancelJob()
-                            })
-                            break;
-                        }
-
-                        case 'skip': {
-                            break;
-                        }
-                    }
-
-                    schedule.cancelJob('m-job')
-                })
-            )
+            message.react(client.emojis.cache.find(emoji => emoji.name === "Skip")))
     }).catch(function() {
         console.log("failed")
     })
+
+    schedule.scheduleJob('r-job', '59 * * * *', function() {
+        var find_max = {
+            'onTime': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "OnTime")).count,
+            'fifteen': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "152")).count,
+            'thirty': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "302")).count,
+            'fourtyf': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "452")).count,
+            'skip': message.cache.get(client.emojis.cache.find(emoji => emoji.name === "Skip")).count
+        }
+        var max;
+        for (var h in find_max) {
+            if (!max || (find_max[h] > find_max[max])) {
+                max = h;
+            }
+        }
+
+        switch (max) {
+            case 'onTime': {
+                schedule.scheduleJob('alert-job', '0 * * * *', function() {
+                    alertExpeds()
+                    schedule.cancelJob()
+                })
+                break;
+            }
+
+            case 'fifteen': {
+                schedule.scheduleJob('alert-job', '15 * * * *', function() {
+                    alertExpeds()
+                    schedule.cancelJob()
+                })
+                break;
+            }
+
+            case 'thirty': {
+                schedule.scheduleJob('alert-job', '30 * * * *', function() {
+                    alertExpeds()
+                    schedule.cancelJob()
+                })
+                break;
+            }
+
+            case 'fourtyf': {
+                schedule.scheduleJob('alert-job', '45 * * * *', function() {
+                    alertExpeds()
+                    schedule.cancelJob()
+                })
+                break;
+            }
+
+            case 'skip': {
+                break;
+            }
+        }
+
+        schedule.cancelJob('m-job')
+    })
 }
 
+client.on('message', message => {
+    if (message.content === '.dansignal') {
+        return message.channel.send('Sending the Dan Signal! Calling @nub!')
+    }
+
+    morningExpeds.schedule();
+    eveningExpeds.schedule();
+    // client.channels.cache.get('783513086429888515').send("hi")
+});
 
 function alertExpeds() {
     client.channels.cache.get('783513086429888515').send("@here Please log on now! <:MMDino:" + client.emojis.cache.find(emoji => emoji.name === "MMDino") + ">")
