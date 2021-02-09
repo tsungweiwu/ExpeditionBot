@@ -47,7 +47,7 @@ client.on('ready', () => {
 });
 
 function message() {
-    client.channels.cache.get('783513086429888515').send(" It's time for expeds, Please react to when you can show up <:MMDino:" + client.emojis.cache.find(emoji => emoji.name === "MMDino") + ">").then(function(message) {
+    client.channels.cache.get('783513086429888515').send("@here It's time for expeds, Please react to when you can show up before :59 <:MMDino:" + client.emojis.cache.find(emoji => emoji.name === "MMDino") + ">").then(function(message) {
         message.react(client.emojis.cache.find(emoji => emoji.name === "OnTime")).then(
             message.react(client.emojis.cache.find(emoji => emoji.name === "152"))).then(
             message.react(client.emojis.cache.find(emoji => emoji.name === "302"))).then(
@@ -64,10 +64,10 @@ function message() {
                 }
             })
             console.log(max + " " + maxCount)
-
             switch (max) {
                 case 'OnTime': {
                     console.log("entered on time")
+                    client.channels.cache.get('783513086429888515').send("Majority voted for On Time with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '0 * * * *', function() {
                         alertExpeds()
                         schedule.cancelJob()
@@ -77,6 +77,7 @@ function message() {
 
                 case '152': {
                     console.log("entered on 15")
+                    client.channels.cache.get('783513086429888515').send("Majority voted for :15 with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '15 * * * *', function() {
                         alertExpeds()
                         schedule.cancelJob()
@@ -86,6 +87,7 @@ function message() {
 
                 case '302': {
                     console.log("entered on 30")
+                    client.channels.cache.get('783513086429888515').send("Majority voted for 30 with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '30 * * * *', function() {
                         alertExpeds()
                         schedule.cancelJob()
@@ -95,6 +97,7 @@ function message() {
 
                 case '452': {
                     console.log("entered on 45")
+                    client.channels.cache.get('783513086429888515').send("Majority voted for 45 with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '45 * * * *', function() {
                         alertExpeds()
                         schedule.cancelJob()
