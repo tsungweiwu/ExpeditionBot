@@ -70,7 +70,7 @@ function message() {
                     client.channels.cache.get('783513086429888515').send("Majority voted for On Time with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '0 * * * *', function() {
                         alertExpeds()
-                        schedule.cancelJob()
+                        schedule.cancelJob('alert-job')
                     })
                     break;
                 }
@@ -80,7 +80,7 @@ function message() {
                     client.channels.cache.get('783513086429888515').send("Majority voted for :15 with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '15 * * * *', function() {
                         alertExpeds()
-                        schedule.cancelJob()
+                        schedule.cancelJob('alert-job')
                     })
                     break;
                 }
@@ -90,7 +90,7 @@ function message() {
                     client.channels.cache.get('783513086429888515').send("Majority voted for 30 with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '30 * * * *', function() {
                         alertExpeds()
-                        schedule.cancelJob()
+                        schedule.cancelJob('alert-job')
                     })
                     break;
                 }
@@ -100,7 +100,7 @@ function message() {
                     client.channels.cache.get('783513086429888515').send("Majority voted for 45 with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '45 * * * *', function() {
                         alertExpeds()
-                        schedule.cancelJob()
+                        schedule.cancelJob('alert-job')
                     })
                     break;
                 }
