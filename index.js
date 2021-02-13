@@ -40,36 +40,167 @@ var bonusExpeds = schedule.scheduleJob(bonusRule, function() {
 client.on('ready', () => {
     console.info(`Logged in as ${client.user.tag}!`);
 
-    morningExpeds.schedule();
-    eveningExpeds.schedule();
-    bonusExpeds.schedule();
+    morningExpeds.schedule("Morning Expeditions");
+    eveningExpeds.schedule("Evening Expeditions");
+    bonusExpeds.schedule("Bonus Expeditions");
+    // message("Morning Expeditions");
     // client.channels.cache.get('783513086429888515').send("hi")
 });
 
-function message() {
-    client.channels.cache.get('783513086429888515').send("@here It's time for expeds, Please react to when you can show up before :59 <:MMDino:" + client.emojis.cache.find(emoji => emoji.name === "MMDino") + ">").then(function(message) {
+function message(exped) {
+    var signedMembers = new Map();
+    const titleName = {'OnTime': 'On Time', '152': 'Fifteen', '302': 'Thirty', '452': 'Fourty-Five', 'Skip': 'Skip'};
+    var editBool = true;
+
+    const embed = {
+        title: exped,
+        description: "It's time for expeds, Please react to when you can show up before :59 <:MMDino:" + client.emojis.cache.find(emoji => emoji.name === "MMDino") + ">",
+        fields: [
+            {
+                name: "<:OnTime:" + client.emojis.cache.find(emoji => emoji.name === "OnTime") + "> On Time (0/5)",
+                value: "-\n",
+                inline: true
+            },
+            {
+                name: "<:152:" + client.emojis.cache.find(emoji => emoji.name === "152") + "> Fifteen (0/5)",
+                value: "-\n",
+                inline: true
+            },
+            {
+                name: "<:302:" + client.emojis.cache.find(emoji => emoji.name === "302") + "> Thirty (0/5)",
+                value: "-\n",
+                inline: true
+            },
+            {
+                name: "<:452:" + client.emojis.cache.find(emoji => emoji.name === "452") + "> Fourty-Five (0/5)",
+                value: "-\n",
+                inline: true
+            },
+            {
+                name: "<:Skip:" + client.emojis.cache.find(emoji => emoji.name === "Skip") + "> Skip (0/5)",
+                value: "-\n",
+                inline: true
+            }
+        ]
+    };
+
+    client.channels.cache.get('783513086429888515').send({embed: embed}).then(function(message) {
         message.react(client.emojis.cache.find(emoji => emoji.name === "OnTime")).then(
             message.react(client.emojis.cache.find(emoji => emoji.name === "152"))).then(
             message.react(client.emojis.cache.find(emoji => emoji.name === "302"))).then(
             message.react(client.emojis.cache.find(emoji => emoji.name === "452"))).then(
             message.react(client.emojis.cache.find(emoji => emoji.name === "Skip")))
 
-        message.awaitReactions((reaction, user) => user.id === message.author.id,{time: (14*60000)}).then(collected => {
+
+        /**
+         * ADD REACTION METHOD
+         */
+        client.on('messageReactionAdd', (reaction, user) => {
+            var userArray = [];
+            var userIds = [];
+            reaction.users.cache.map(u => {
+                if (u.id !== '805522695708999723') {
+                    var name = null;
+                    if (message.guild.members.cache.get(u.id).nickname === null) {
+                        name = user.username;
+                    } else {
+                        name = message.guild.members.cache.get(u.id).nickname;
+                    }
+
+                    userArray.push(name);
+                    userIds.push(u.id);
+                }
+            });
+
+            let num;
+            if (reaction.emoji.name === 'OnTime') {
+                num = 0;
+            } else if (reaction.emoji.name === '152') {
+                num = 1;
+            } else if (reaction.emoji.name === '302') {
+                num = 2;
+            } else if (reaction.emoji.name === '452') {
+                num = 3;
+            } else if (reaction.emoji.name === 'Skip') {
+                num = 4;
+            }
+
+            embed.fields[num].name = "<:" + reaction.emoji.name + ":" + client.emojis.cache.find(emoji => emoji.name === reaction.emoji.name) + "> " + titleName[reaction.emoji.name] + " (" + userArray.length +"/5)";
+            embed.fields[num].value = userArray.join("\n");
+            if (embed.fields[num].value === "") {
+                embed.fields[num].value = "-\n";
+            }
+            if(editBool) {
+                message.edit({embed: embed});
+                signedMembers.set(reaction.emoji.name, userIds);
+            }
+        })
+
+
+        /**
+         * REMOVE REACTION METHOD
+         */
+        client.on('messageReactionRemove', (reaction, user) => {
+            var userArray = [];
+            var userIds = [];
+            reaction.users.cache.map(u => {
+                if (u.id !== '805522695708999723') {
+                    var name = null;
+                    if (message.guild.members.cache.get(u.id).nickname === null) {
+                        name = user.username;
+                    } else {
+                        name = message.guild.members.cache.get(u.id).nickname;
+                    }
+
+                    userArray.push(name);
+                    userIds.push(u.id);
+                }
+            });
+
+            let num;
+            if (reaction.emoji.name === 'OnTime') {
+                num = 0;
+            } else if (reaction.emoji.name === '152') {
+                num = 1;
+            } else if (reaction.emoji.name === '302') {
+                num = 2;
+            } else if (reaction.emoji.name === '452') {
+                num = 3;
+            } else if (reaction.emoji.name === 'Skip') {
+                num = 4;
+            }
+
+            embed.fields[num].name = "<:" + reaction.emoji.name + ":" + client.emojis.cache.find(emoji => emoji.name === reaction.emoji.name) + "> " + titleName[reaction.emoji.name] + " (" + userArray.length +"/5)";
+            embed.fields[num].value = userArray.join("\n");
+            if (embed.fields[num].value === "") {
+                embed.fields[num].value = "-\n";
+            }
+            if(editBool) {
+                message.edit({embed: embed});
+                signedMembers.set(reaction.emoji.name, userIds);
+            }
+        })
+
+
+        message.awaitReactions((reaction, user) => user.id === message.author.id,{time: (14*800)}).then(collected => {
             var max;
             var maxCount;
             collected.map(emotes => {
                 if (!max || (emotes.count > maxCount)) {
-                    maxCount = emotes.count;
+                    maxCount = emotes.count - 1;
                     max = emotes.emoji.name;
                 }
             })
             console.log(max + " " + maxCount)
+
+            editBool = false;
+
             switch (max) {
                 case 'OnTime': {
                     console.log("entered on time")
                     client.channels.cache.get('783513086429888515').send("Majority voted for On Time with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '0 * * * *', function() {
-                        alertExpeds()
+                        alertExpeds(signedMembers, 'OnTime')
                         schedule.cancelJob('alert-job')
                     })
                     break;
@@ -79,7 +210,7 @@ function message() {
                     console.log("entered on 15")
                     client.channels.cache.get('783513086429888515').send("Majority voted for :15 with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '15 * * * *', function() {
-                        alertExpeds()
+                        alertExpeds(signedMembers, '152')
                         schedule.cancelJob('alert-job')
                     })
                     break;
@@ -87,9 +218,9 @@ function message() {
 
                 case '302': {
                     console.log("entered on 30")
-                    client.channels.cache.get('783513086429888515').send("Majority voted for 30 with a total of " + maxCount + " votes");
+                    client.channels.cache.get('783513086429888515').send("Majority voted for :30 with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '30 * * * *', function() {
-                        alertExpeds()
+                        alertExpeds(signedMembers, '302')
                         schedule.cancelJob('alert-job')
                     })
                     break;
@@ -97,15 +228,16 @@ function message() {
 
                 case '452': {
                     console.log("entered on 45")
-                    client.channels.cache.get('783513086429888515').send("Majority voted for 45 with a total of " + maxCount + " votes");
+                    client.channels.cache.get('783513086429888515').send("Majority voted for :45 with a total of " + maxCount + " votes");
                     schedule.scheduleJob('alert-job', '45 * * * *', function() {
-                        alertExpeds()
+                        alertExpeds(signedMembers, '452')
                         schedule.cancelJob('alert-job')
                     })
                     break;
                 }
 
                 case 'Skip': {
+                    console.log("entered on skip")
                     client.channels.cache.get('783513086429888515').send("Everyone is skipping!! Bunch of noobs!")
                     break;
                 }
@@ -141,7 +273,13 @@ client.on('message', message => {
     // client.channels.cache.get('783513086429888515').send("hi")
 });
 
-function alertExpeds() {
-    client.channels.cache.get('783513086429888515').send("@here Please log on now! <:MMDino:" + client.emojis.cache.find(emoji => emoji.name === "MMDino") + ">")
+function alertExpeds(signedMembers, time) {
+    var members = "";
+    for (var i = 0; i < signedMembers.get(time).length; i++) {
+        members += "<@" + signedMembers.get(time)[i] + ">  ";
+    }
+    client.channels.cache.get('783513086429888515').send(members + "Please log on now! <:MMDino:" + client.emojis.cache.find(emoji => emoji.name === "MMDino") + ">")
 }
+
+
 
