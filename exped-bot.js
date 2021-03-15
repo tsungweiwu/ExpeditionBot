@@ -10,7 +10,7 @@ client.login(TOKEN);
 var morningRule = new schedule.RecurrenceRule();
 morningRule.hour = 9;
 morningRule.minute = 45;
-morningRule.tz = 'America/Los_Angeles';
+morningRule.tz = 'Etc/GMT+8';
 //50 12 * * *
 var morningExpeds = schedule.scheduleJob(morningRule, function() {
     message("Morning Expeditions");
@@ -20,7 +20,7 @@ var morningExpeds = schedule.scheduleJob(morningRule, function() {
 var eveningRule = new schedule.RecurrenceRule();
 eveningRule.hour = 17;
 eveningRule.minute = 45;
-eveningRule.tz = 'America/Los_Angeles';
+eveningRule.tz = 'Etc/GMT+8';
 //50 12 * * *
 var eveningExpeds = schedule.scheduleJob(eveningRule, function() {
     message("Evening Expeditions");
@@ -30,7 +30,7 @@ var eveningExpeds = schedule.scheduleJob(eveningRule, function() {
 var bonusRule = new schedule.RecurrenceRule();
 bonusRule.hour = 15;
 bonusRule.minute = 45;
-bonusRule.tz = 'America/Los_Angeles';
+bonusRule.tz = 'Etc/GMT+8';
 bonusRule.dayOfWeek = [0, 6];
 //50 12 * * *
 var bonusExpeds = schedule.scheduleJob(bonusRule, function() {
