@@ -328,6 +328,31 @@ client.on('message', message => {
     if (message.content === '.edi') {
         return message.channel.send('Sending the Edi Signal! Calling <@156232419219996672>!')
     }
+
+    if (message.content.startsWith('.calc')) {
+        let str = message.content.split(" ");
+
+        let serverTimeString = new Date().toLocaleString("en-US", {timeZone: "Etc/GMT+8"});
+        let serverTime = new Date(serverTimeString);
+        // hours as (HH) format
+        let hours = ("0" + serverTime.getHours()).slice(-2);
+        // minutes as (mm) format
+        let minutes = ("0" + serverTime.getMinutes()).slice(-2);
+
+        let timeStr = str[1].split(":");
+        let inputHour = Number(timeStr[0]);
+        let inputMin = Number(timeStr[1]);
+
+        let timeStart = hours*60 + minutes;
+        let timeEnd = inputHour*60 + inputMin;
+        let difference = timeEnd - timeStart;
+
+        if (difference < 0) {
+            difference = 24*60 + difference;
+        }
+
+        return message.channel.send("<@" + message.author + ">, You will need to load " + difference + " minutes of AB");
+    }
     // client.channels.cache.get('783513086429888515').send("hi")
 });
 
