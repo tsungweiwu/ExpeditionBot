@@ -65,14 +65,13 @@ client.on('message', message => {
     }
 
     if (message.content === '.edi') {
-        return message.channel.send('Sending the Edi Signal! Calling <@156232419219996672>!')
+        return message.channel.send('Sending the Edi Signal!! Calling <@156232419219996672>!')
     }
 
     if (message.content.startsWith('.calc')) {
         let str = message.content.split(" ");
 
-        let serverTimeString = new Date().toLocaleString("en-US", {timeZone: "Etc/GMT+8"});
-        let serverTime = new Date(serverTimeString);
+        let serverTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Etc/GMT+8"}));
         // hours as (HH) format
         let hours = ("0" + serverTime.getHours()).slice(-2);
         // minutes as (mm) format
