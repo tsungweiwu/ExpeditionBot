@@ -81,8 +81,9 @@ client.on('message', message => {
         let inputHour = Number(timeStr[0]);
         let inputMin = Number(timeStr[1]);
 
-        let timeStart = hours*60 + minutes;
+        let timeStart = Number(hours*60) + Number(minutes);
         let timeEnd = inputHour*60 + inputMin;
+        console.log(timeStart + " and " + timeEnd);
         let difference = timeEnd - timeStart;
 
         if (difference < 0) {
