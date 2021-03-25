@@ -7,35 +7,35 @@ const TOKEN = process.env.TOKEN;
 client.login(TOKEN);
 
 // morning
-var morningRule = new schedule.RecurrenceRule();
+const morningRule = new schedule.RecurrenceRule();
 morningRule.hour = 9;
 morningRule.minute = 45;
 morningRule.tz = 'Etc/GMT+8';
 //50 12 * * *
-var morningExpeds = schedule.scheduleJob(morningRule, function() {
+const morningExpeds = schedule.scheduleJob(morningRule, function () {
     message("Morning Expeditions");
-})
+});
 
 // evening
-var eveningRule = new schedule.RecurrenceRule();
+const eveningRule = new schedule.RecurrenceRule();
 eveningRule.hour = 17;
 eveningRule.minute = 45;
 eveningRule.tz = 'Etc/GMT+8';
 //50 12 * * *
-var eveningExpeds = schedule.scheduleJob(eveningRule, function() {
+const eveningExpeds = schedule.scheduleJob(eveningRule, function () {
     message("Evening Expeditions");
-})
+});
 
 // Bonus
-var bonusRule = new schedule.RecurrenceRule();
+const bonusRule = new schedule.RecurrenceRule();
 bonusRule.hour = 15;
 bonusRule.minute = 45;
 bonusRule.tz = 'Etc/GMT+8';
 bonusRule.dayOfWeek = [0, 6];
 //50 12 * * *
-var bonusExpeds = schedule.scheduleJob(bonusRule, function() {
+const bonusExpeds = schedule.scheduleJob(bonusRule, function () {
     message("Bonus Expeditions");
-})
+});
 
 client.on('ready', () => {
     console.info(`Logged in as ${client.user.tag} v4!`);
@@ -45,14 +45,63 @@ client.on('ready', () => {
     bonusExpeds.schedule();
     // message("Morning Expeditions");
     // client.channels.cache.get('783513086429888515').send("hi")
+
+    client.on('message', message => {
+        if (message.content === '.dan') {
+            return message.channel.send('Sending the Dan Signal! Calling <@282966925519093761>!')
+        }
+
+        if (message.content === '.cat') {
+            return message.channel.send('Sending the Kitty Signal! Calling <@322511661753696257>!')
+        }
+
+        if (message.content === '.sher') {
+            return message.channel.send('Sending the Sher Signal! Calling <@588914329253052421>!')
+        }
+
+        if (message.content === '.kell') {
+            return message.channel.send('Sending the Kelly Signal! Calling <@709659335554367510>!')
+        }
+
+        if (message.content === '.edi') {
+            return message.channel.send('Sending the Edi Signal! Calling <@156232419219996672>!')
+        }
+
+        if (message.content.startsWith('.calc')) {
+            let str = message.content.split(" ");
+
+            let serverTimeString = new Date().toLocaleString("en-US", {timeZone: "Etc/GMT+8"});
+            let serverTime = new Date(serverTimeString);
+            // hours as (HH) format
+            let hours = ("0" + serverTime.getHours()).slice(-2);
+            // minutes as (mm) format
+            let minutes = ("0" + serverTime.getMinutes()).slice(-2);
+
+            let timeStr = str[1].split(":");
+            let inputHour = Number(timeStr[0]);
+            let inputMin = Number(timeStr[1]);
+
+            let timeStart = hours*60 + minutes;
+            let timeEnd = inputHour*60 + inputMin;
+            let difference = timeEnd - timeStart;
+
+            if (difference < 0) {
+                difference = 24*60 + difference;
+            }
+
+            return message.channel.send("<@" + message.author + ">, You will need to load " + difference + " minutes of AB");
+        }
+        // client.channels.cache.get('783513086429888515').send("hi")
+    });
+
 });
 
 function message(exped) {
-    var signedMembers = new Map();
-    var signedNames = new Map();
+    const signedMembers = new Map();
+    const signedNames = new Map();
 
     const titleName = {'OnTime': 'On Time', '152': 'Fifteen', '302': 'Thirty', '452': 'Fourty-Five', 'Skip': 'Skip'};
-    var editBool = true;
+    let editBool = true;
 
     const embed = {
         title: exped,
@@ -99,11 +148,11 @@ function message(exped) {
          * ADD REACTION METHOD
          */
         client.on('messageReactionAdd', (reaction, user) => {
-            var userArray = [];
-            var userIds = [];
+            let userArray = [];
+            let userIds = [];
 
             if (user.id !== '805522695708999723') {
-                var name = null;
+                let name = null;
                 if (message.guild.members.cache.get(user.id).nickname === null) {
                     name = user.username;
                 } else {
@@ -174,11 +223,11 @@ function message(exped) {
          * REMOVE REACTION METHOD
          */
         client.on('messageReactionRemove', (reaction, user) => {
-            var userArray = [];
-            var userIds = [];
+            let userArray = [];
+            let userIds = [];
 
             if (user.id !== '805522695708999723') {
-                var name = null;
+                let name = null;
                 if (message.guild.members.cache.get(user.id).nickname === null) {
                     name = user.username;
                 } else {
@@ -308,57 +357,9 @@ function message(exped) {
 
 }
 
-client.on('message', message => {
-    if (message.content === '.dan') {
-        return message.channel.send('Sending the Dan Signal! Calling <@282966925519093761>!')
-    }
-
-    if (message.content === '.cat') {
-        return message.channel.send('Sending the Kitty Signal! Calling <@322511661753696257>!')
-    }
-
-    if (message.content === '.sher') {
-        return message.channel.send('Sending the Sher Signal! Calling <@588914329253052421>!')
-    }
-
-    if (message.content === '.kell') {
-        return message.channel.send('Sending the Kelly Signal! Calling <@709659335554367510>!')
-    }
-
-    if (message.content === '.edi') {
-        return message.channel.send('Sending the Edi Signal! Calling <@156232419219996672>!')
-    }
-
-    if (message.content.startsWith('.calc')) {
-        let str = message.content.split(" ");
-
-        let serverTimeString = new Date().toLocaleString("en-US", {timeZone: "Etc/GMT+8"});
-        let serverTime = new Date(serverTimeString);
-        // hours as (HH) format
-        let hours = ("0" + serverTime.getHours()).slice(-2);
-        // minutes as (mm) format
-        let minutes = ("0" + serverTime.getMinutes()).slice(-2);
-
-        let timeStr = str[1].split(":");
-        let inputHour = Number(timeStr[0]);
-        let inputMin = Number(timeStr[1]);
-
-        let timeStart = hours*60 + minutes;
-        let timeEnd = inputHour*60 + inputMin;
-        let difference = timeEnd - timeStart;
-
-        if (difference < 0) {
-            difference = 24*60 + difference;
-        }
-
-        return message.channel.send("<@" + message.author + ">, You will need to load " + difference + " minutes of AB");
-    }
-    // client.channels.cache.get('783513086429888515').send("hi")
-});
-
 function alertExpeds(signedMembers, time) {
-    var members = "";
-    for (var i = 0; i < signedMembers.get(time).length; i++) {
+    let members = "";
+    for (let i = 0; i < signedMembers.get(time).length; i++) {
         members += "<@" + signedMembers.get(time)[i] + ">  ";
     }
     client.channels.cache.get('811435136615972891').send("@here " + "Please log on now! <:MMDino:" + client.emojis.cache.find(emoji => emoji.name === "MMDino") + ">")
