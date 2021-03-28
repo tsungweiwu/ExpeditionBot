@@ -276,16 +276,16 @@ client.on('message', message => {
                             name: 'Regular Bosses', value: '.cygnus\n.pinkbean\n.horntail\n.zakum', inline: true
                         },
                         {
-                            name: 'Buff List', value: '.buffs'
+                            name: 'Buff List', value: '.buffs', inline: true
                         },
                         {
                             name: 'Potential Cube', value: '.cubes', inline: true
                         },
                         {
-                            name: 'Flame Options', value: '.flames', inline: true
+                            name: 'Flame Options', value: '.flames'
                         },
                         {
-                            name: 'Stats Cap/Max %', value: '.statcap'
+                            name: 'Stats Cap/Max %', value: '.statcap', inline: true
                         },
                         {
                             name: 'Hyper Stats', value: '.hyper', inline: true
