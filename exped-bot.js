@@ -182,7 +182,7 @@ let infoMap = new Map([
         }}],
     ['.horntail', {'type' : 'embed', embed: {
             image: {
-                url: 'http://media.playpark.net/MapleStory/uploadimages/horntail.gif'
+                url: 'https://i.imgur.com/wTPMLKp.gif'
             },
             color: 15406156,
             title: "Horn Tail (Boss)",
@@ -196,7 +196,7 @@ let infoMap = new Map([
         }}],
     ['.zakum', {'type' : 'embed', embed: {
             image: {
-                url: 'http://media.playpark.net/MapleStory/uploadimages/zakum.gif'
+                url: 'https://2.bp.blogspot.com/-2j-y2LN2eOo/TeO4fGwv3gI/AAAAAAAAAaw/Mx3Ad7Q8Utg/s1600/Zakum_Full.gif'
             },
             color: 15406156,
             title: "Zakum (Boss)",
