@@ -277,6 +277,18 @@ client.on('message', message => {
                         },
                         {
                             name: 'Buff List', value: '.buffs'
+                        },
+                        {
+                            name: 'Potential Cube', value: '.cubes', inline: true
+                        },
+                        {
+                            name: 'Flame Options', value: '.flames', inline: true
+                        },
+                        {
+                            name: 'Stats Cap/Max %', value: '.statcap'
+                        },
+                        {
+                            name: 'Hyper Stats', value: '.hyper', inline: true
                         }
                     ]
                 },
