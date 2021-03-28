@@ -182,7 +182,7 @@ let infoMap = new Map([
         }}],
     ['.horntail', {'type' : 'embed', embed: {
             image: {
-                url: 'https://i.imgur.com/wTPMLKp.gif'
+                url: 'https://static.wikia.nocookie.net/maplestory/images/2/28/Full_Mob_Horntail.png/revision/latest/scale-to-width-down/714?cb=20100116013843'
             },
             color: 15406156,
             title: "Horn Tail (Boss)",
@@ -196,7 +196,7 @@ let infoMap = new Map([
         }}],
     ['.zakum', {'type' : 'embed', embed: {
             image: {
-                url: 'https://2.bp.blogspot.com/-2j-y2LN2eOo/TeO4fGwv3gI/AAAAAAAAAaw/Mx3Ad7Q8Utg/s1600/Zakum_Full.gif'
+                url: 'https://static.wikia.nocookie.net/maplestory/images/4/43/Mob_Zakum.png/revision/latest/scale-to-width-down/363?cb=20201214015649'
             },
             color: 15406156,
             title: "Zakum (Boss)",
