@@ -263,13 +263,13 @@ client.on('message', message => {
                             name: 'AB Calculator', value: '.calc 00:00'
                         },
                         {
-                            name: 'Commander Bosses', value: '.hilla\n.vonleon'
+                            name: 'Commander Bosses', value: '.hilla\n.vonleon', inline: true
                         },
                         {
-                            name: 'Root Abyss Bosses', value: '.vellum\n.queen\n.pierre\n.vonbon'
+                            name: 'Root Abyss Bosses', value: '.vellum\n.queen\n.pierre\n.vonbon', inline: true
                         },
                         {
-                            name: 'Regular Bosses', value: '.cygnus\n.pinkbean\n.horntail\n.zakum'
+                            name: 'Regular Bosses', value: '.cygnus\n.pinkbean\n.horntail\n.zakum', inline: true
                         },
                         {
                             name: 'Buff List', value: '.buffs'
