@@ -241,19 +241,19 @@ client.on('message', message => {
         return message.channel.send("<@" + message.author + ">, You will need to load " + difference + " minutes of AB");
     }
 
-    if (message.content === '!edicount') {
+    if (message.content === '.edicount') {
         return message.channel.send(`Serving ${client.guilds.cache.size} servers`);
     }
 
     let guildNames = [];
-    if (message.content === '!ediservers') {
+    if (message.content === '.ediservers') {
         client.guilds.cache.forEach(guild => {
             guildNames.push(`${guild.name} | ${guild.id}`);
         })
         return message.channel.send(guildNames);
     }
 
-    if (message.content === '!invite') {
+    if (message.content === '.invite') {
         return message.channel.send(`https://discord.com/oauth2/authorize?client_id=805522695708999723&scope=bot`);
     }
 
