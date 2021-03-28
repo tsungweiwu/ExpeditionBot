@@ -1,4 +1,5 @@
 let expeditionVote = require('./expedMessageVote.js');
+let expedition = require('./expeditionAnnouncement');
 const schedule = require('node-schedule')
 let fort = require('./fortAnnouncement');
 
@@ -18,12 +19,12 @@ module.exports = {
     morning: function(client) {
         // morning
         const morningRule = new schedule.RecurrenceRule();
-        morningRule.hour = 9;
-        morningRule.minute = 45;
+        morningRule.hour = 13;
+        morningRule.minute = 22;
         morningRule.tz = 'Etc/GMT+8';
         //50 12 * * *
         const morningExpeds = schedule.scheduleJob(morningRule, function () {
-            expeditionVote.message("Morning Expeditions", client);
+            expedition.message("Morning Expeditions", client);
         });
         morningExpeds.schedule();
     },

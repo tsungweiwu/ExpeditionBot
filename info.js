@@ -42,7 +42,7 @@ const infoMap = new Map([
         }}],
     ['.vellum', {'type' : 'embed', embed: {
             image: {
-                url: 'https://rebootms.files.wordpress.com/2016/05/belum.png?w=257&h=300'
+                url: 'https://cdn.discordapp.com/attachments/590455709334765568/825825739885510698/image0.gif'
             },
             color: 15406156,
             title: "Vellum (Root Abyss Boss)",
@@ -56,7 +56,7 @@ const infoMap = new Map([
         }}],
     ['.queen', {'type' : 'embed', embed: {
             image: {
-                url: 'https://rebootms.files.wordpress.com/2016/05/bloody_queen1.gif?w=180&h=300'
+                url: 'https://media.discordapp.net/attachments/590455709334765568/825834350843133962/image0.gif?width=385&height=686'
             },
             color: 15406156,
             title: "Crimson Queen (Root Abyss Boss)",
