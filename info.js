@@ -56,7 +56,7 @@ const infoMap = new Map([
         }}],
     ['.queen', {'type' : 'embed', embed: {
             image: {
-                url: 'https://media.discordapp.net/attachments/590455709334765568/825834350843133962/image0.gif?width=385&height=686'
+                url: 'https://media.discordapp.net/attachments/590455709334765568/825845460232699944/image0.gif'
             },
             color: 15406156,
             title: "Crimson Queen (Root Abyss Boss)",
