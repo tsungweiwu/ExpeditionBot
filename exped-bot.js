@@ -60,6 +60,10 @@ client.on('ready', () => {
 
 let infoMap = new Map([
     ['.buffs', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/790451126956064778/796177528129060894/unknown.png'}],
+    ['.cubes', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/723019017513861151/822432778674634782/image0.png?width=450&height=686'}],
+    ['.flames', {'type' : 'image', 'img' : 'https://i.imgur.com/UPrSqQu.png'}],
+    ['.statcap', {'type' : 'image', 'img' : 'https://i.imgur.com/PVEouLi.png'}],
+    ['.hyper', {'type' : 'image', 'img' : 'https://i.imgur.com/0wOlXqr.png'}],
     ['.hilla', {'type' : 'embed', embed: {
             image: {
                 url: 'https://nisrockk.files.wordpress.com/2011/06/mob_hilla.png'
