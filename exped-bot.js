@@ -58,6 +58,10 @@ client.on('ready', () => {
     // client.channels.cache.get('783513086429888515').send("hi")
 });
 
+let infoMap = new Map([
+    ['.buffs', 'https://media.discordapp.net/attachments/790451126956064778/796177528129060894/unknown.png']
+]);
+
 client.on('message', message => {
 
     if (message.content.startsWith('.calc')) {
@@ -99,6 +103,53 @@ client.on('message', message => {
 
     if (message.content === '!invite') {
         return message.channel.send(`https://discord.com/oauth2/authorize?client_id=805522695708999723&scope=bot`);
+    }
+
+    if (message.content === ".help") {
+        try {
+            return message.channel.send("List of Commands", {
+                embed: {
+                    color: "#ff7b00",
+                    fields: [
+                        {
+                            name: 'AB Calculator', value: '.calc 00:00'
+                        },
+                        {
+                            name: 'Buff List', value: '.buffs'
+                        }
+                    ]
+                },
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    if (infoMap.has(message.content)) {
+        let attachment = new Discord.MessageAttachment(infoMap.get(message.content));
+        try {
+            return message.channel.send(attachment);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    if (message.content === ".mock") {
+        let channel = message.channel; // <-- your pre-filled channel variable
+
+        channel.messages
+            .fetch({limit: 2})
+            .then((messages) => {
+                let lastMessage = messages.last();
+
+                if (!lastMessage.author.bot) {
+                    // The author of the last message wasn't a bot
+                    return message.channel.send(
+                        firstLetterUppercase(lastMessage.content)
+                    );
+                }
+            })
+            .catch(console.error);
     }
     // client.channels.cache.get('783513086429888515').send("hi")
 });
@@ -372,6 +423,8 @@ function fortAnnounce(title) {
     };
 
     client.channels.cache.get('519774750680154123').send("@here", {embed: embed});
+    client.channels.cache.get('472829227159257099').send("@here", {embed: embed});
+
 }
 
 function alertExpeds(signedMembers, time) {
@@ -382,3 +435,10 @@ function alertExpeds(signedMembers, time) {
     client.channels.cache.get('811435136615972891').send("@here " + "Please log on now! <:MMDino:" + client.emojis.cache.find(emoji => emoji.name === "MMDino") + ">")
 }
 
+function firstLetterUppercase(input) {
+    let res = "";
+    for (let i = 0; i < input.length; i++) {
+        res += i % 2 === 0 ? input.charAt(i).toUpperCase() : input.charAt(i);
+    }
+    return res;
+}
