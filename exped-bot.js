@@ -282,7 +282,7 @@ client.on('message', message => {
                             name: 'Potential Cube', value: '.cubes', inline: true
                         },
                         {
-                            name: 'Flame Options', value: '.flames'
+                            name: 'Flame Options', value: '.flames', inline: true
                         },
                         {
                             name: 'Stats Cap/Max %', value: '.statcap', inline: true
