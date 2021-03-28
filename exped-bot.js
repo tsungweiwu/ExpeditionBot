@@ -6,6 +6,16 @@ const TOKEN = process.env.TOKEN;
 
 client.login(TOKEN);
 
+// fort
+const fortRule = new schedule.RecurrenceRule();
+fortRule.hour = 19;
+fortRule.minute = 00;
+fortRule.tz = 'Etc/GMT+8';
+//50 12 * * *
+const fortRace = schedule.scheduleJob(fortRule, function () {
+    fortAnnounce("Guild Fort Race");
+});
+
 // morning
 const morningRule = new schedule.RecurrenceRule();
 morningRule.hour = 9;
@@ -40,6 +50,7 @@ const bonusExpeds = schedule.scheduleJob(bonusRule, function () {
 client.on('ready', () => {
     console.info(`Logged in as ${client.user.tag} v4!`);
 
+    fortRace.schedule();
     morningExpeds.schedule();
     eveningExpeds.schedule();
     bonusExpeds.schedule();
@@ -48,25 +59,6 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.content === '.dan') {
-        return message.channel.send('Sending the Dan Signal! Calling <@282966925519093761>!')
-    }
-
-    if (message.content === '.cat') {
-        return message.channel.send('Sending the Kitty Signal! Calling <@322511661753696257>!')
-    }
-
-    if (message.content === '.sher') {
-        return message.channel.send('Sending the Sher Signal! Calling <@588914329253052421>!')
-    }
-
-    if (message.content === '.kell') {
-        return message.channel.send('Sending the Kelly Signal! Calling <@709659335554367510>!')
-    }
-
-    if (message.content === '.edi') {
-        return message.channel.send('Sending the Edi Signal!! Calling <@156232419219996672>!')
-    }
 
     if (message.content.startsWith('.calc')) {
         let str = message.content.split(" ");
@@ -91,6 +83,22 @@ client.on('message', message => {
         }
 
         return message.channel.send("<@" + message.author + ">, You will need to load " + difference + " minutes of AB");
+    }
+
+    if (message.content === '!edicount') {
+        return message.channel.send(`Serving ${client.guilds.cache.size} servers`);
+    }
+
+    let guildNames = [];
+    if (message.content === '!ediservers') {
+        client.guilds.cache.forEach(guild => {
+            guildNames.push(`${guild.name} | ${guild.id}`);
+        })
+        return message.channel.send(guildNames);
+    }
+
+    if (message.content === '!invite') {
+        return message.channel.send(`https://discord.com/oauth2/authorize?client_id=805522695708999723&scope=bot`);
     }
     // client.channels.cache.get('783513086429888515').send("hi")
 });
@@ -289,8 +297,8 @@ function message(exped) {
 
 
         message.awaitReactions((reaction, user) => user.id === message.author.id,{time: (14*60000)}).then(collected => {
-            var max;
-            var maxCount;
+            let max;
+            let maxCount;
             collected.map(emotes => {
                 if (!max || (emotes.count > maxCount)) {
                     maxCount = emotes.count - 1;
@@ -354,6 +362,16 @@ function message(exped) {
         console.log("failed")
     })
 
+}
+
+function fortAnnounce(title) {
+    const embed = {
+        title: title,
+        description: "@here It's time for Guild Fort Race! Please log on and help us get this dub!",
+        color: '#FFA500'
+    };
+
+    client.channels.cache.get('519774750680154123').send("@here", {embed: embed});
 }
 
 function alertExpeds(signedMembers, time) {
