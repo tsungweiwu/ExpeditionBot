@@ -1,5 +1,9 @@
 module.exports = {
-    helpInfo: function(message) {
+    callback: ({ message, instance }) => {
+        // instance.commandHandler.commands.forEach((command) => {
+        //     if (command.category !== 'Owner' && command.category !== 'Configuration')
+        //         console.log(command)
+        // })
         try {
             return message.channel.send("List of Commands", {
                 embed: {

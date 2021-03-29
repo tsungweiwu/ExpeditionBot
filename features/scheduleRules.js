@@ -4,7 +4,7 @@ const schedule = require('node-schedule')
 let fort = require('./fortAnnouncement');
 
 module.exports = {
-    fort: function(client) {
+    fort: function(client, config) {
         // fort
         const fortRule = new schedule.RecurrenceRule();
         fortRule.hour = 19;
@@ -12,23 +12,24 @@ module.exports = {
         fortRule.tz = 'Etc/GMT+8';
         //50 12 * * *
         const fortRace = schedule.scheduleJob(fortRule, function () {
-            fort.fortAnnounce("Guild Fort Race", client);
+            fort.fortAnnounce("Guild Fort Race", client, config);
         });
         fortRace.schedule();
     },
-    morning: function(client) {
+    morning: function(client, config) {
         // morning
         const morningRule = new schedule.RecurrenceRule();
-        morningRule.hour = 13;
-        morningRule.minute = 22;
+        morningRule.hour = 9;
+        morningRule.minute = 45;
         morningRule.tz = 'Etc/GMT+8';
         //50 12 * * *
         const morningExpeds = schedule.scheduleJob(morningRule, function () {
-            expedition.message("Morning Expeditions", client);
+            expeditionVote.message("Morning Expeditions", client);
+            expedition.message("Morning Expeditions", client, config);
         });
         morningExpeds.schedule();
     },
-    evening: function(client) {
+    evening: function(client, config) {
         // evening
         const eveningRule = new schedule.RecurrenceRule();
         eveningRule.hour = 17;
@@ -37,10 +38,11 @@ module.exports = {
         //50 12 * * *
         const eveningExpeds = schedule.scheduleJob(eveningRule, function () {
             expeditionVote.message("Evening Expeditions", client);
+            expedition.message("Evening Expeditions", client, config);
         });
         eveningExpeds.schedule();
     },
-    bonus: function(client) {
+    bonus: function(client, config) {
         // Bonus
         const bonusRule = new schedule.RecurrenceRule();
         bonusRule.hour = 15;
@@ -50,6 +52,7 @@ module.exports = {
         //50 12 * * *
         const bonusExpeds = schedule.scheduleJob(bonusRule, function () {
             expeditionVote.message("Bonus Expeditions", client);
+            expedition.message("Bonus Expeditions", client, config);
         });
         bonusExpeds.schedule();
     }

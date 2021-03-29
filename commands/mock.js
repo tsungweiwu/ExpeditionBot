@@ -1,5 +1,6 @@
 module.exports = {
-    mock: function (message) {
+    category: 'Fun',
+    callback: ({ message }) => {
         let channel = message.channel; // <-- your pre-filled channel variable
 
         channel.messages

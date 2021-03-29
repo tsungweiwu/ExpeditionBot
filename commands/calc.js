@@ -1,6 +1,11 @@
 module.exports = {
-    calcAB: function (message) {
-        let str = message.content.split(" ");
+    category: 'Guides',
+    callback: ({ message }) => {
+        const content = message.content;
+        const targetChannel = message.channel;
+        const author = message.author;
+
+        let str = content.split(" ");
 
         let serverTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Etc/GMT+8"}));
         // hours as (HH) format
@@ -21,6 +26,9 @@ module.exports = {
             difference = 24*60 + difference;
         }
 
-        return message.channel.send("<@" + message.author + ">, You will need to load " + difference + " minutes of AB");
+        targetChannel.send("<@" + author + ">, You will need to load " + difference + " minutes of AB");
+    },
+    error: ({ error, command, message, info }) => {
+        message.channel.send("Incorrect input! Use .calc 00:00")
     }
 }

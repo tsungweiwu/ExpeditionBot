@@ -6,7 +6,7 @@ const infoMap = new Map([
     ['.hyper', {'type' : 'image', 'img' : 'https://i.imgur.com/0wOlXqr.png'}],
     ['.hilla', {'type' : 'embed', embed: {
             image: {
-                url: 'https://nisrockk.files.wordpress.com/2011/06/mob_hilla.png'
+                url: 'https://media.discordapp.net/attachments/590455709334765568/825850493674061874/image0.gif'
             },
             color: 15406156,
             title: "Hilla (Commander Boss)",
@@ -126,7 +126,7 @@ const infoMap = new Map([
         }}],
     ['.horntail', {'type' : 'embed', embed: {
             image: {
-                url: 'https://static.wikia.nocookie.net/maplestory/images/2/28/Full_Mob_Horntail.png/revision/latest/scale-to-width-down/714?cb=20100116013843'
+                url: 'https://media.discordapp.net/attachments/590455709334765568/825949254433636402/image0.gif'
             },
             color: 15406156,
             title: "Horn Tail (Boss)",
@@ -140,7 +140,7 @@ const infoMap = new Map([
         }}],
     ['.zakum', {'type' : 'embed', embed: {
             image: {
-                url: 'https://static.wikia.nocookie.net/maplestory/images/4/43/Mob_Zakum.png/revision/latest/scale-to-width-down/363?cb=20201214015649'
+                url: 'https://cdn.discordapp.com/attachments/590455709334765568/825853972052574238/image0.gif'
             },
             color: 15406156,
             title: "Zakum (Boss)",
