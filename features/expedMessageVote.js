@@ -1,7 +1,7 @@
 const schedule = require('node-schedule')
 
 module.exports = {
-    message: function (title, client) {
+    message: function (title, client, config) {
         const signedMembers = new Map();
         const signedNames = new Map();
 
@@ -41,7 +41,7 @@ module.exports = {
             color: '#FFA500'
         };
 
-        client.channels.cache.get('811435136615972891').send("@here", {embed: embed}).then(function(message) {
+        client.channels.cache.get(config.channelId).send(`<@&${config.mentions}>`, {embed: embed}).then(function(message) {
             message.react(client.emojis.cache.find(emoji => emoji.name === "OnTime")).then(
                 message.react(client.emojis.cache.find(emoji => emoji.name === "152"))).then(
                 message.react(client.emojis.cache.find(emoji => emoji.name === "302"))).then(
@@ -53,73 +53,82 @@ module.exports = {
              * ADD REACTION METHOD
              */
             client.on('messageReactionAdd', (reaction, user) => {
-                let userArray = [];
-                let userIds = [];
+                if (user.bot) return;
+                if (!reaction.message.guild) return;
 
-                if (user.id !== '805522695708999723') {
-                    let name = null;
-                    if (message.guild.members.cache.get(user.id).nickname === null) {
-                        name = user.username;
-                    } else {
-                        name = message.guild.members.cache.get(user.id).nickname;
+                if (reaction.message.channel.id === config.channelId) {
+                    let userArray = [];
+                    let userIds = [];
+
+                    if (user.id !== '805522695708999723') {
+                        let name;
+                        try {
+                            if (message.guild.members.cache.get(user.id).nickname === null) {
+                                name = user.username;
+                            } else {
+                                name = message.guild.members.cache.get(user.id).nickname;
+                            }
+                        } catch (error) {
+                            name = user.username;
+                        }
+
+                        if (signedNames.has(reaction.emoji.name)) {
+                            userArray = signedNames.get(reaction.emoji.name);
+                            userArray.push(name);
+
+                            userIds = signedMembers.get(reaction.emoji.name);
+                            userIds.push(user.id);
+
+                            signedNames.set(reaction.emoji.name, userArray);
+                            signedMembers.set(reaction.emoji.name, userIds);
+                        } else {
+                            userArray.push(name);
+                            userIds.push(user.id);
+                            signedNames.set(reaction.emoji.name, userArray);
+                            signedMembers.set(reaction.emoji.name, userIds);
+                        }
+
+                        console.log(signedNames);
+                        console.log(signedMembers);
                     }
 
-                    if (signedNames.has(reaction.emoji.name)) {
-                        userArray = signedNames.get(reaction.emoji.name);
-                        userArray.push(name);
 
-                        userIds = signedMembers.get(reaction.emoji.name);
-                        userIds.push(user.id);
+                    // reaction.users.cache.map(u => {
+                    //   if (u.id !== '805522695708999723') {
+                    //     var name = null;
+                    //     if (message.guild.members.cache.get(u.id).nickname === null) {
+                    //       name = user.username;
+                    //     } else {
+                    //       name = message.guild.members.cache.get(u.id).nickname;
+                    //     }
 
-                        signedNames.set(reaction.emoji.name, userArray);
-                        signedMembers.set(reaction.emoji.name, userIds);
-                    } else {
-                        userArray.push(name);
-                        userIds.push(user.id);
-                        signedNames.set(reaction.emoji.name, userArray);
-                        signedMembers.set(reaction.emoji.name, userIds);
+                    //     userArray.push(name);
+                    //     userIds.push(u.id);
+                    //   }
+                    // });
+
+                    let num;
+                    if (reaction.emoji.name === 'OnTime') {
+                        num = 0;
+                    } else if (reaction.emoji.name === '152') {
+                        num = 1;
+                    } else if (reaction.emoji.name === '302') {
+                        num = 2;
+                    } else if (reaction.emoji.name === '452') {
+                        num = 3;
+                    } else if (reaction.emoji.name === 'Skip') {
+                        num = 4;
                     }
 
-                    console.log(signedNames);
-                    console.log(signedMembers);
-                }
-
-
-                // reaction.users.cache.map(u => {
-                //   if (u.id !== '805522695708999723') {
-                //     var name = null;
-                //     if (message.guild.members.cache.get(u.id).nickname === null) {
-                //       name = user.username;
-                //     } else {
-                //       name = message.guild.members.cache.get(u.id).nickname;
-                //     }
-
-                //     userArray.push(name);
-                //     userIds.push(u.id);
-                //   }
-                // });
-
-                let num;
-                if (reaction.emoji.name === 'OnTime') {
-                    num = 0;
-                } else if (reaction.emoji.name === '152') {
-                    num = 1;
-                } else if (reaction.emoji.name === '302') {
-                    num = 2;
-                } else if (reaction.emoji.name === '452') {
-                    num = 3;
-                } else if (reaction.emoji.name === 'Skip') {
-                    num = 4;
-                }
-
-                embed.fields[num].name = "<:" + reaction.emoji.name + ":" + client.emojis.cache.find(emoji => emoji.name === reaction.emoji.name) + "> " + titleName[reaction.emoji.name] + " (" + userArray.length +"/5)";
-                embed.fields[num].value = userArray.join("\n");
-                if (embed.fields[num].value === "") {
-                    embed.fields[num].value = "-\n";
-                }
-                if(editBool) {
-                    message.edit({embed: embed});
-                    signedMembers.set(reaction.emoji.name, userIds);
+                    embed.fields[num].name = "<:" + reaction.emoji.name + ":" + client.emojis.cache.find(emoji => emoji.name === reaction.emoji.name) + "> " + titleName[reaction.emoji.name] + " (" + userArray.length +"/5)";
+                    embed.fields[num].value = userArray.join("\n");
+                    if (embed.fields[num].value === "") {
+                        embed.fields[num].value = "-\n";
+                    }
+                    if(editBool) {
+                        message.edit({embed: embed});
+                        signedMembers.set(reaction.emoji.name, userIds);
+                    }
                 }
             })
 
@@ -128,69 +137,78 @@ module.exports = {
              * REMOVE REACTION METHOD
              */
             client.on('messageReactionRemove', (reaction, user) => {
-                let userArray = [];
-                let userIds = [];
+                if (user.bot) return;
+                if (!reaction.message.guild) return;
 
-                if (user.id !== '805522695708999723') {
-                    let name = null;
-                    if (message.guild.members.cache.get(user.id).nickname === null) {
-                        name = user.username;
-                    } else {
-                        name = message.guild.members.cache.get(user.id).nickname;
-                    }
+                if (reaction.message.channel.id === config.channelId) {
+                    let userArray = [];
+                    let userIds = [];
 
-                    if (signedNames.has(reaction.emoji.name)) {
-                        userArray = signedNames.get(reaction.emoji.name);
-                        userIds = signedMembers.get(reaction.emoji.name);
-
-                        const index = userArray.indexOf(name);
-                        if (index > -1) {
-                            userArray.splice(index, 1);
-                            userIds.splice(index, 1);
+                    if (user.id !== '805522695708999723') {
+                        let name;
+                        try {
+                            if (message.guild.members.cache.get(user.id).nickname === null) {
+                                name = user.username;
+                            } else {
+                                name = message.guild.members.cache.get(user.id).nickname;
+                            }
+                        } catch (error) {
+                            name = user.username;
                         }
-                        signedNames.set(reaction.emoji.name, userArray);
+
+                        if (signedNames.has(reaction.emoji.name)) {
+                            userArray = signedNames.get(reaction.emoji.name);
+                            userIds = signedMembers.get(reaction.emoji.name);
+
+                            const index = userArray.indexOf(name);
+                            if (index > -1) {
+                                userArray.splice(index, 1);
+                                userIds.splice(index, 1);
+                            }
+                            signedNames.set(reaction.emoji.name, userArray);
+                        }
                     }
+
+
+                    // reaction.users.cache.map(u => {
+                    //   if (u.id !== '805522695708999723') {
+                    //     var name = null;
+                    //     if (message.guild.members.cache.get(u.id).nickname === null) {
+                    //       name = user.username;
+                    //     } else {
+                    //       name = message.guild.members.cache.get(u.id).nickname;
+                    //     }
+
+                    //     userArray.push(name);
+                    //     userIds.push(u.id);
+                    //   }
+                    // });
+
+                    let num;
+                    if (reaction.emoji.name === 'OnTime') {
+                        num = 0;
+                    } else if (reaction.emoji.name === '152') {
+                        num = 1;
+                    } else if (reaction.emoji.name === '302') {
+                        num = 2;
+                    } else if (reaction.emoji.name === '452') {
+                        num = 3;
+                    } else if (reaction.emoji.name === 'Skip') {
+                        num = 4;
+                    }
+
+                    embed.fields[num].name = "<:" + reaction.emoji.name + ":" + client.emojis.cache.find(emoji => emoji.name === reaction.emoji.name) + "> " + titleName[reaction.emoji.name] + " (" + userArray.length +"/5)";
+                    embed.fields[num].value = userArray.join("\n");
+                    if (embed.fields[num].value === "") {
+                        embed.fields[num].value = "-\n";
+                    }
+                    if(editBool) {
+                        message.edit({embed: embed});
+                        signedMembers.set(reaction.emoji.name, userIds);
+                    }
+                    console.log(signedNames);
+                    console.log(signedMembers);
                 }
-
-
-                // reaction.users.cache.map(u => {
-                //   if (u.id !== '805522695708999723') {
-                //     var name = null;
-                //     if (message.guild.members.cache.get(u.id).nickname === null) {
-                //       name = user.username;
-                //     } else {
-                //       name = message.guild.members.cache.get(u.id).nickname;
-                //     }
-
-                //     userArray.push(name);
-                //     userIds.push(u.id);
-                //   }
-                // });
-
-                let num;
-                if (reaction.emoji.name === 'OnTime') {
-                    num = 0;
-                } else if (reaction.emoji.name === '152') {
-                    num = 1;
-                } else if (reaction.emoji.name === '302') {
-                    num = 2;
-                } else if (reaction.emoji.name === '452') {
-                    num = 3;
-                } else if (reaction.emoji.name === 'Skip') {
-                    num = 4;
-                }
-
-                embed.fields[num].name = "<:" + reaction.emoji.name + ":" + client.emojis.cache.find(emoji => emoji.name === reaction.emoji.name) + "> " + titleName[reaction.emoji.name] + " (" + userArray.length +"/5)";
-                embed.fields[num].value = userArray.join("\n");
-                if (embed.fields[num].value === "") {
-                    embed.fields[num].value = "-\n";
-                }
-                if(editBool) {
-                    message.edit({embed: embed});
-                    signedMembers.set(reaction.emoji.name, userIds);
-                }
-                console.log(signedNames);
-                console.log(signedMembers);
             })
 
 

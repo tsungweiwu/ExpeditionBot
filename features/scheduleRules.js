@@ -26,7 +26,7 @@ module.exports = {
         //50 12 * * *
         const morningExpeds = schedule.scheduleJob(morningRule, function () {
             if (config.isTimeVote) {
-                expeditionVote.message("Morning Expeditions", client);
+                expeditionVote.message("Morning Expeditions", client, config);
             }
             else {
                 expedition.message("Morning Expeditions", client, config);
@@ -43,7 +43,7 @@ module.exports = {
         //50 12 * * *
         const eveningExpeds = schedule.scheduleJob(eveningRule, function () {
             if (config.isTimeVote) {
-                expeditionVote.message("Evening Expeditions", client);
+                expeditionVote.message("Evening Expeditions", client, config);
             }
             else {
                 expedition.message("Evening Expeditions", client, config);
@@ -61,7 +61,7 @@ module.exports = {
         //50 12 * * *
         const bonusExpeds = schedule.scheduleJob(bonusRule, function () {
             if (config.isTimeVote) {
-                expeditionVote.message("Bonus Expeditions", client);
+                expeditionVote.message("Bonus Expeditions", client, config);
             }
             else {
                 expedition.message("Bonus Expeditions", client, config);

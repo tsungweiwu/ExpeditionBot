@@ -35,6 +35,8 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
+    if (message.author.bot) return;
+
     if (infoMap.has(message.content)) {
         infoHelper.info(message, infoMap, Discord);
     }
