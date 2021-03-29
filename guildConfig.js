@@ -11,7 +11,7 @@ let configuration = new Map([
         {
             'name': 'milk',
             'channelId': '604140886628106252',
-            'mentions': '625536070787923969',
+            'mentions': 'nobody, cuz kit kat doesnt appreciate mentions',
             'isTimeVote': false,
         }
     ],
