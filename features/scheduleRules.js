@@ -5,6 +5,7 @@ let fort = require('./fortAnnouncement');
 
 module.exports = {
     fort: function(client, config) {
+        if (config.isTimeVote) return;
         // fort
         const fortRule = new schedule.RecurrenceRule();
         fortRule.hour = 19;
@@ -24,8 +25,12 @@ module.exports = {
         morningRule.tz = 'Etc/GMT+8';
         //50 12 * * *
         const morningExpeds = schedule.scheduleJob(morningRule, function () {
-            expeditionVote.message("Morning Expeditions", client);
-            expedition.message("Morning Expeditions", client, config);
+            if (config.isTimeVote) {
+                expeditionVote.message("Morning Expeditions", client);
+            }
+            else {
+                expedition.message("Morning Expeditions", client, config);
+            }
         });
         morningExpeds.schedule();
     },
@@ -37,8 +42,12 @@ module.exports = {
         eveningRule.tz = 'Etc/GMT+8';
         //50 12 * * *
         const eveningExpeds = schedule.scheduleJob(eveningRule, function () {
-            expeditionVote.message("Evening Expeditions", client);
-            expedition.message("Evening Expeditions", client, config);
+            if (config.isTimeVote) {
+                expeditionVote.message("Evening Expeditions", client);
+            }
+            else {
+                expedition.message("Evening Expeditions", client, config);
+            }
         });
         eveningExpeds.schedule();
     },
@@ -51,8 +60,12 @@ module.exports = {
         bonusRule.dayOfWeek = [0, 6];
         //50 12 * * *
         const bonusExpeds = schedule.scheduleJob(bonusRule, function () {
-            expeditionVote.message("Bonus Expeditions", client);
-            expedition.message("Bonus Expeditions", client, config);
+            if (config.isTimeVote) {
+                expeditionVote.message("Bonus Expeditions", client);
+            }
+            else {
+                expedition.message("Bonus Expeditions", client, config);
+            }
         });
         bonusExpeds.schedule();
     }
