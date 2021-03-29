@@ -4,6 +4,7 @@ module.exports = {
     message: function (title, client, config) {
         const signedMembers = new Map();
         const signedNames = new Map();
+        const emojis = ['OnTime', '152', '302', '452', 'Skip'];
 
         const titleName = {'OnTime': 'On Time', '152': 'Fifteen', '302': 'Thirty', '452': 'Fourty-Five', 'Skip': 'Skip'};
         let editBool = true;
@@ -55,6 +56,7 @@ module.exports = {
             client.on('messageReactionAdd', (reaction, user) => {
                 if (user.bot) return;
                 if (!reaction.message.guild) return;
+                if (!emojis.includes(reaction.emoji.name)) return;
 
                 if (reaction.message.channel.id === config.channelId) {
                     let userArray = [];
@@ -139,6 +141,7 @@ module.exports = {
             client.on('messageReactionRemove', (reaction, user) => {
                 if (user.bot) return;
                 if (!reaction.message.guild) return;
+                if (!emojis.includes(reaction.emoji.name)) return;
 
                 if (reaction.message.channel.id === config.channelId) {
                     let userArray = [];

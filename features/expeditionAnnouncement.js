@@ -6,6 +6,7 @@ module.exports = {
         const titleName = {'✅': 'Attending', '❌': 'Not Attending', '❓': 'Tentative'};
         let editBool = true;
         let signedNames = new Map();
+        const emojis = ['✅', '❌', '❓'];
 
         const embed = {
             title: title,
@@ -41,6 +42,7 @@ module.exports = {
             client.on('messageReactionAdd', (reaction, user) => {
                 if (user.bot) return;
                 if (!reaction.message.guild) return;
+                if (!emojis.includes(reaction.emoji.name)) return;
 
                 if (reaction.message.channel.id === config.channelId) {
                     let num;
@@ -99,6 +101,7 @@ module.exports = {
             client.on('messageReactionRemove', (reaction, user) => {
                 if (user.bot) return;
                 if (!reaction.message.guild) return;
+                if (!emojis.includes(reaction.emoji.name)) return;
 
                 if (reaction.message.channel.id === config.channelId) {
                     let userArray = [];
