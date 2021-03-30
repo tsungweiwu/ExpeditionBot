@@ -17,6 +17,8 @@ module.exports = {
         let inputHour = Number(timeStr[0]);
         let inputMin = Number(timeStr[1]);
 
+        if (inputHour > 23 || inputHour < 0 || inputMin < 0 || inputMin > 60) return message.reply("Invalid Input");
+
         let timeStart = Number(hours*60) + Number(minutes);
         let timeEnd = inputHour*60 + inputMin;
         console.log(timeStart + " and " + timeEnd);

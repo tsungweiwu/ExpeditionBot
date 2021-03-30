@@ -65,6 +65,8 @@ module.exports = {
                     hour = Number(time[0]);
                     minute = Number(time[1]);
 
+                    if (hour > 23 || hour < 0 || minute < 0 || minute > 60) return message.reply("Invalid Input");
+
                     message.reply("Confirm if **" + hour + ":" + minute + "** is correct __(type yes or y to confirm)__.. Will expire in **10** seconds..");
                     message.channel.awaitMessages(filter, {max: 1, time: 10000}).then(collected => {
                         if (collected.first().content.toLowerCase() === 'yes' || collected.first().content.toLowerCase() === 'y') {
