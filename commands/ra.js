@@ -11,7 +11,7 @@ module.exports = {
         let guildConfig = new Map(Object.entries(jsonObject));
 
         if (guildConfig.get(message.guild.id).spamChannelId === "") return;
-        if (message.channel.id === guildConfig.get(message.guild.id).spamChannelId) return message.reply('Wrong Channel!');
+        if (message.channel.id !== guildConfig.get(message.guild.id).spamChannelId) return message.reply('Wrong Channel!');
 
         let str = message.content.split(" ");
         if (str[1] === 'cancel') {
