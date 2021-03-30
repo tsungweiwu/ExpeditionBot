@@ -33,7 +33,7 @@ module.exports = {
             color: '#FFA500'
         };
 
-        client.channels.cache.get(config.raChannelId).send(`<@&${config.mentions}>`, {embed: embed}).then(function (message) {
+        client.channels.cache.get(config.raChannelId).send({embed: embed}).then(function (message) {
             message.react('✅').then(
                 message.react('❌')).then(
                 message.react('❓')).catch()
@@ -46,7 +46,7 @@ module.exports = {
                 if (!reaction.message.guild) return;
                 if (!emojis.includes(reaction.emoji.name)) return;
 
-                if (reaction.message.channel.id === config.channelId) {
+                if (reaction.message.channel.id === config.raChannelId) {
                     let num;
                     if (reaction.emoji.name === '✅') {
                         num = 0;
@@ -114,7 +114,7 @@ module.exports = {
                 if (!reaction.message.guild) return;
                 if (!emojis.includes(reaction.emoji.name)) return;
 
-                if (reaction.message.channel.id === config.channelId) {
+                if (reaction.message.channel.id === config.raChannelId) {
                     let userArray = [];
                     let userIds = [];
 

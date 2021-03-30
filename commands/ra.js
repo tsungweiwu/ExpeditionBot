@@ -10,6 +10,9 @@ module.exports = {
         const jsonObject = JSON.parse(rawData);
         let guildConfig = new Map(Object.entries(jsonObject));
 
+        if (guildConfig.get(message.guild.id).raChannelId === "") return;
+        if (message.channel.id === guildConfig.get(message.guild.id).raChannelId) return message.reply('Wrong Channel!');
+
         let str = message.content.split(" ");
         if (str[1] === 'cancel') {
             let temp = guildConfig.get(message.guild.id);
@@ -53,8 +56,8 @@ module.exports = {
                 }
                 description = collected.first().content;
 
-                message.reply("Please enter a **Start Time (MSM Server Time, 24hr format)**.. Will expire in **10** seconds..");
-                message.channel.awaitMessages(filter, {max: 1, time: 10000}).then(collected => {
+                message.reply("Please enter a **Start Time (MSM Server Time, 24hr format)**.. Will expire in **20** seconds..");
+                message.channel.awaitMessages(filter, {max: 1, time: 20000}).then(collected => {
                     if (collected.first().content === 'cancel' || collected.first().content.toLowerCase() === 'c') {
                         return message.reply("Canceled!");
                     }
@@ -92,6 +95,6 @@ module.exports = {
 
     },
     error: ({ error, command, message, info, client }) => {
-        message.channel.send("Incorrect input! Use .calc 00:00")
+        message.channel.send("Incorrect input!")
     }
 }

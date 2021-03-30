@@ -28,12 +28,16 @@ client.on('ready', () => {
     const jsonObject = JSON.parse(rawData);
     let guildConfig = new Map(Object.entries(jsonObject));
 
-    client.guilds.cache.forEach((guild) => {
-        schedule.fort(client, guildConfig.get(guild.id));
-        schedule.morning(client, guildConfig.get(guild.id));
-        schedule.evening(client, guildConfig.get(guild.id));
-        schedule.bonus(client, guildConfig.get(guild.id));
+    guildConfig.forEach(guild => {
+        schedule.fort(client, guild);
+        schedule.morning(client, guild);
+        schedule.evening(client, guild);
+        schedule.bonus(client, guild);
     })
+
+    // client.guilds.cache.forEach((guild) => {
+    //
+    // })
     // message("Morning Expeditions");
     // client.channels.cache.get('783513086429888515').send("hi")
 });
