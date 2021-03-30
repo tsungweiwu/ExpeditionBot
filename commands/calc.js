@@ -21,6 +21,9 @@ module.exports = {
 
         let timeStart = Number(hours*60) + Number(minutes);
         let timeEnd = inputHour*60 + inputMin;
+
+        if (isNaN(timeEnd)) return message.reply("Invalid Input");
+
         console.log(timeStart + " and " + timeEnd);
         let difference = timeEnd - timeStart;
 
