@@ -3,10 +3,10 @@ const Discord = require('discord.js');
 const WOKCommands = require('wokcommands')
 const client = new Discord.Client();
 const TOKEN = process.env.TOKEN;
+const fs = require('fs');
 
 // data
 const infoMap = require('./info.js');
-const guildConfig = require('./guildConfig')
 
 // functions
 let infoHelper = require('./features/infoHelper');
@@ -22,6 +22,11 @@ client.on('ready', () => {
         .setBotOwner('156232419219996672')
 
     console.info(`Logged in as ${client.user.tag} v4!`);
+
+    let rawData = fs.readFileSync('guildConfig.json',
+        {encoding:'utf8', flag:'r'});
+    const jsonObject = JSON.parse(rawData);
+    let guildConfig = new Map(Object.entries(jsonObject));
 
     client.guilds.cache.forEach((guild) => {
         schedule.fort(client, guildConfig.get(guild.id));

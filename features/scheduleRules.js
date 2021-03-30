@@ -25,6 +25,7 @@ module.exports = {
         morningRule.tz = 'Etc/GMT+8';
         //50 12 * * *
         const morningExpeds = schedule.scheduleJob(morningRule, function () {
+
             if (config.isTimeVote) {
                 expeditionVote.message("Morning Expeditions", client, config);
             }
