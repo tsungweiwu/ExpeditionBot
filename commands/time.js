@@ -9,7 +9,7 @@ module.exports = {
         // minutes as (mm) format
         let minutes = ("0" + serverTime.getMinutes()).slice(-2);
 
-        targetChannel.send("It is now " + hours + ":" + minutes + " server time");
+        targetChannel.send("It is now **" + hours + ":" + minutes + "** server time");
     },
     error: ({ error, command, message, info }) => {
         message.channel.send("Incorrect input!")

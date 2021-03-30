@@ -35,6 +35,12 @@ module.exports = {
                         },
                         {
                             name: 'Hyper Stats', value: '.hyper', inline: true
+                        },
+                        {
+                            name: 'Server Time', value: '.time', inline: true
+                        },
+                        {
+                            name: 'Create RA Signup Sheet', value: '.ra', inline: true
                         }
                     ]
                 },
