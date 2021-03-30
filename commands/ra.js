@@ -95,6 +95,6 @@ module.exports = {
 
     },
     error: ({ error, command, message, info, client }) => {
-        message.channel.send("Incorrect input!")
+        message.channel.send("Your server has not been configured yet. Please contact admin!")
     }
 }

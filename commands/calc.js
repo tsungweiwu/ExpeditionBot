@@ -26,7 +26,7 @@ module.exports = {
             difference = 24*60 + difference;
         }
 
-        targetChannel.send("<@" + author + ">, You will need to load " + difference + " minutes of AB");
+        targetChannel.reply("You will need to load " + difference + " minutes of AB");
     },
     error: ({ error, command, message, info }) => {
         message.channel.send("Incorrect input! Use .calc 00:00")
