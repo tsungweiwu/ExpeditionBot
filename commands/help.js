@@ -5,43 +5,35 @@ module.exports = {
         //         console.log(command)
         // })
         try {
-            return message.channel.send("List of Commands", {
+            return message.channel.send({
                 embed: {
                     color: "#ff7b00",
+                    title: "__List of Commands__",
+                    thumbnail: {
+                        url: "https://lh3.googleusercontent.com/RX46lC-_Co8CYqp9Z9eSddIQpuifBnZl3oeIskq_cdse34H9ujnYv0spvRGJZZ7U7dwuRg=s85",
+                    },
                     fields: [
                         {
-                            name: 'AB Calculator', value: '.calc 00:00'
+                            name: ':lion_face: Commander', value: '`.hilla` `.vonleon`', inline: true
                         },
                         {
-                            name: 'Commander Bosses', value: '.hilla\n.vonleon', inline: true
+                            name: ':chicken: Root Abyss', value: '`.vellum` `.queen` `.pierre` `.vonbon`', inline: true
                         },
                         {
-                            name: 'Root Abyss Bosses', value: '.vellum\n.queen\n.pierre\n.vonbon', inline: true
+                            name: ':dragon_face: Regular', value: '`.cygnus` `.pinkbean` `.horntail` `.zakum`', inline: true
                         },
                         {
-                            name: 'Regular Bosses', value: '.cygnus\n.pinkbean\n.horntail\n.zakum', inline: true
+                            name: ':notebook_with_decorative_cover: Guides', value: '`.buffs` `.cubes` `.flames` `.statcap` `.hyper`', inline: true
                         },
                         {
-                            name: 'Buff List', value: '.buffs', inline: true
+                            name: ':watch: Get Current Server Time', value: '`.time`', inline: true
                         },
                         {
-                            name: 'Potential Cube', value: '.cubes', inline: true
+                            name: ':notepad_spiral: Create RA Signup Sheet', value: '`.ra`', inline: true
                         },
                         {
-                            name: 'Flame Options', value: '.flames', inline: true
+                            name: ':timer: AB Calculator', value: '`.calc 00:00`'
                         },
-                        {
-                            name: 'Stats Cap/Max %', value: '.statcap', inline: true
-                        },
-                        {
-                            name: 'Hyper Stats', value: '.hyper', inline: true
-                        },
-                        {
-                            name: 'Server Time', value: '.time', inline: true
-                        },
-                        {
-                            name: 'Create RA Signup Sheet', value: '.ra', inline: true
-                        }
                     ]
                 },
             });

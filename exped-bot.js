@@ -17,8 +17,7 @@ client.on('ready', () => {
         commandsDir: 'commands',
         featureDir: 'features',
         showWarns: false
-    }).setMongoPath(process.env.MONGO_URI)
-        .setDefaultPrefix('.')
+    }).setDefaultPrefix('.')
         .setBotOwner('156232419219996672')
 
     console.info(`Logged in as ${client.user.tag} v4!`);

@@ -8,24 +8,26 @@ module.exports = {
         if (!message.member.roles.cache.some(role => role.name === 'GM')) return message.reply("You need to have the 'GM' role to access this command");
 
         let str = message.content.split(" ");
-        if (str.length < 2) return message.reply('List of configurable options', {
+        if (str.length < 2) return message.reply({
             embed: {
                 color: "#ff7b00",
+                title: "__List of configurable options__",
+                description: "• Add these commands after `.configure` to edit",
                 fields: [
                     {
-                        name: 'Expedition Ch.', value: '.configure expeds', inline: true
+                        name: 'Expedition Ch.', value: '`expeds`', inline: true
                     },
                     {
-                        name: 'Fort Ch.', value: '.configure fort', inline: true
+                        name: 'Fort Ch.', value: '`fort`', inline: true
                     },
                     {
-                        name: 'Root Abyss Ch.', value: '.configure ra', inline: true
+                        name: 'Root Abyss Ch.', value: '`ra`', inline: true
                     },
                     {
-                        name: 'Spam/Bot Cmd Ch.', value: '.configure spam', inline: true
+                        name: 'Spam/Bot Cmd Ch.', value: '`spam`', inline: true
                     },
                     {
-                        name: 'Mentions/Roles', value: '.configure mentions', inline: true
+                        name: 'Mentions/Roles', value: '`mentions`', inline: true
                     },
                 ]
             }
