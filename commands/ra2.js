@@ -10,8 +10,8 @@ module.exports = {
         const jsonObject = JSON.parse(rawData);
         let guildConfig = new Map(Object.entries(jsonObject));
 
-        if (guildConfig.get(message.guild.id).spamChannelId === "") return;
-        if (message.channel.id !== guildConfig.get(message.guild.id).spamChannelId) return message.reply('Wrong Channel!');
+        if (guildConfig.get(message.guild.id).raChannelId !== "") return message.reply('Please configure your RA channel');
+        if (guildConfig.get(message.guild.id).spamChannelId !== "" && message.channel.id !== guildConfig.get(message.guild.id).spamChannelId) return message.reply('Wrong Channel!');
 
         let str = message.content.split(" ");
         if (str[1] === 'cancel') {

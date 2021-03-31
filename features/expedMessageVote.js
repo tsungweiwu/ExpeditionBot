@@ -42,7 +42,7 @@ module.exports = {
             color: '#FFA500'
         };
 
-        client.channels.cache.get(config.channelId).send(`<@&${config.mentions}>`, {embed: embed}).then(function(message) {
+        client.channels.cache.get(config.channelId).send((config.mentions !== '' ? `<@&${config.mentions}>` : ''), {embed: embed}).then(function(message) {
             message.react(client.emojis.cache.find(emoji => emoji.name === "OnTime")).then(
                 message.react(client.emojis.cache.find(emoji => emoji.name === "152"))).then(
                 message.react(client.emojis.cache.find(emoji => emoji.name === "302"))).then(

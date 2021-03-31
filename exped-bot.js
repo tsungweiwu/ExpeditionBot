@@ -42,6 +42,54 @@ client.on('ready', () => {
     // client.channels.cache.get('783513086429888515').send("hi")
 });
 
+client.on('guildCreate', guild => {
+    let rawData = fs.readFileSync('guildConfig.json',
+        {encoding:'utf8', flag:'r'});
+    const jsonObject = JSON.parse(rawData);
+    let guildConfig = new Map(Object.entries(jsonObject));
+
+    let guildId = guild.id;
+    let guildName = guild.name;
+
+    let guildMap = {
+        "name": guildName,
+        "channelId": "",
+        "fortChannelId": "",
+        "raChannelId": "",
+        "spamChannelId": "",
+        "mentions": "",
+        "isTimeVote": false,
+        "job1": {},
+        "job2": {}
+    }
+
+    guildConfig.set(guildId, guildMap);
+
+    let map = {};
+    guildConfig.forEach(function(value, key){
+        map[key] = value
+    });
+
+    let data = JSON.stringify(map, null, 4);
+    fs.writeFileSync('guildConfig.json', data);
+});
+
+client.on('guildDelete', guild => {
+    let rawData = fs.readFileSync('guildConfig.json',
+        {encoding:'utf8', flag:'r'});
+    const jsonObject = JSON.parse(rawData);
+    let guildConfig = new Map(Object.entries(jsonObject));
+
+    guildConfig.delete(guild.id);
+
+    let map = {};
+    guildConfig.forEach(function(value, key){
+        map[key] = value
+    });
+
+    let data = JSON.stringify(map, null, 4);
+    fs.writeFileSync('guildConfig.json', data);
+});
 
 client.on('message', message => {
     if (message.author.bot) return;

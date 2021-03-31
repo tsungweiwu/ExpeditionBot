@@ -31,7 +31,7 @@ module.exports = {
             color: '#FFA500'
         };
 
-        client.channels.cache.get(config.channelId).send(`<@&${config.mentions}>`, {embed: embed}).then(function (message) {
+        client.channels.cache.get(config.channelId).send((config.mentions !== '' ? `<@&${config.mentions}>` : ''), {embed: embed}).then(function (message) {
             message.react('✅').then(
                 message.react('❌')).then(
                 message.react('❓')).catch()
