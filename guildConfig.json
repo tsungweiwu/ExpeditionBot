@@ -1,11 +1,11 @@
 {
     "472829226094166034": {
         "name": "milk",
-        "channelId": "604140886628106252",
+        "channelId": "",
         "fortChannelId": "604140886628106252",
         "raChannelId": "826147484669706241",
         "spamChannelId": "590455709334765568",
-        "mentions": "nobody, cuz kit kat doesnt appreciate mentions",
+        "mentions": "",
         "isTimeVote": false,
         "job1": {},
         "job2": {}
@@ -29,6 +29,17 @@
         "spamChannelId": "826533902030077953",
         "mentions": "811435548526379051",
         "isTimeVote": true,
+        "job1": {},
+        "job2": {}
+    },
+    "543970772260093967": {
+        "name": "Spades",
+        "channelId": "",
+        "fortChannelId": "611681012950499328",
+        "raChannelId": "696468439224549387",
+        "spamChannelId": "696468439224549387",
+        "mentions": "611678026119249923",
+        "isTimeVote": false,
         "job1": {},
         "job2": {}
     }
