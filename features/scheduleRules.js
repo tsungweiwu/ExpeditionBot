@@ -30,7 +30,9 @@ module.exports = {
                 expeditionVote.message("Morning Expeditions", client, config);
             }
             else {
-                expedition.message("Morning Expeditions", client, config);
+                if (config.channelId !== "") {
+                    expedition.message("Morning Expeditions", client, config);
+                }
             }
         });
         morningExpeds.schedule();

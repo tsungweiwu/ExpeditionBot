@@ -10,10 +10,16 @@ module.exports = {
         let signedNames = new Map();
         const emojis = ['✅', '❌', '❓'];
 
+        let timeStr = hour >= 13 ? `${hour-12}:${minute} pm (GMT+8)` : `${hour}:${minute} am (GMT+8)`;
+
         const embed = {
             title: title,
             description: description,
             fields: [
+                {
+                    name: "**Time**",
+                    value: timeStr
+                },
                 {
                     name: "✅ Attending (0/5)",
                     value: "-\n",
@@ -51,11 +57,11 @@ module.exports = {
                 if (reaction.message.channel.id === config.raChannelId) {
                     let num;
                     if (reaction.emoji.name === '✅') {
-                        num = 0;
-                    } else if (reaction.emoji.name === '❌') {
                         num = 1;
-                    } else if (reaction.emoji.name === '❓') {
+                    } else if (reaction.emoji.name === '❌') {
                         num = 2;
+                    } else if (reaction.emoji.name === '❓') {
+                        num = 3;
                     }
 
                     let userArray = [];
@@ -146,11 +152,11 @@ module.exports = {
 
                     let num;
                     if (reaction.emoji.name === '✅') {
-                        num = 0;
-                    } else if (reaction.emoji.name === '❌') {
                         num = 1;
-                    } else if (reaction.emoji.name === '❓') {
+                    } else if (reaction.emoji.name === '❌') {
                         num = 2;
+                    } else if (reaction.emoji.name === '❓') {
+                        num = 3;
                     }
 
                     embed.fields[num].name = reaction.emoji.name + " " + titleName[reaction.emoji.name] + " (" + userArray.length + "/5)";

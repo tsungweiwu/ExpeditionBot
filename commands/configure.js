@@ -49,9 +49,12 @@ module.exports = {
                     return message.reply("Canceled!");
                 }
 
-                if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
-
-                guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                if (collected.first().content.toLowerCase() === 'none') {
+                    guildInfo.channelId = '';
+                } else {
+                    if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
+                    guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                }
 
                 guildConfig.set(message.guild.id, guildInfo);
                 let map = {};
@@ -73,9 +76,12 @@ module.exports = {
                     return message.reply("Canceled!");
                 }
 
-                if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
-
-                guildInfo.fortChannelId = collected.first().content.replace(/\D/g, '');
+                if (collected.first().content.toLowerCase() === 'none') {
+                    guildInfo.channelId = '';
+                } else {
+                    if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
+                    guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                }
 
                 guildConfig.set(message.guild.id, guildInfo);
                 let map = {};
@@ -97,9 +103,12 @@ module.exports = {
                     return message.reply("Canceled!");
                 }
 
-                if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
-
-                guildInfo.raChannelId = collected.first().content.replace(/\D/g, '');
+                if (collected.first().content.toLowerCase() === 'none') {
+                    guildInfo.channelId = '';
+                } else {
+                    if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
+                    guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                }
 
                 guildConfig.set(message.guild.id, guildInfo);
                 let map = {};
@@ -121,9 +130,12 @@ module.exports = {
                     return message.reply("Canceled!");
                 }
 
-                if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
-
-                guildInfo.spamChannelId = collected.first().content.replace(/\D/g, '');
+                if (collected.first().content.toLowerCase() === 'none') {
+                    guildInfo.channelId = '';
+                } else {
+                    if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
+                    guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                }
 
                 guildConfig.set(message.guild.id, guildInfo);
                 let map = {};
@@ -145,9 +157,12 @@ module.exports = {
                     return message.reply("Canceled!");
                 }
 
-                if (!collected.first().content.includes('@')) return message.reply('Wrong Input');
-
-                guildInfo.mentions = collected.first().content.replace(/\D/g, '');
+                if (collected.first().content.toLowerCase() === 'none') {
+                    guildInfo.channelId = '';
+                } else {
+                    if (!collected.first().content.includes('@')) return message.reply('Wrong Input');
+                    guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                }
 
                 guildConfig.set(message.guild.id, guildInfo);
                 let map = {};
