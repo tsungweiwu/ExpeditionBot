@@ -49,7 +49,9 @@ module.exports = {
                 expeditionVote.message("Evening Expeditions", client, config);
             }
             else {
-                expedition.message("Evening Expeditions", client, config);
+                if (config.channelId !== "") {
+                    expedition.message("Evening Expeditions", client, config);
+                }
             }
         });
         eveningExpeds.schedule();
@@ -67,7 +69,9 @@ module.exports = {
                 expeditionVote.message("Bonus Expeditions", client, config);
             }
             else {
-                expedition.message("Bonus Expeditions", client, config);
+                if (config.channelId !== "") {
+                    expedition.message("Bonus Expeditions", client, config);
+                }
             }
         });
         bonusExpeds.schedule();
