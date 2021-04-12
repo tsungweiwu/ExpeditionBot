@@ -215,7 +215,7 @@ module.exports = {
             })
 
 
-            message.awaitReactions((reaction, user) => user.id === message.author.id,{time: (14*60000)}).then(collected => {
+            message.awaitReactions((reaction, user) => user.id === message.author.id,{time: (29*60000)}).then(collected => {
                 let max;
                 let maxCount;
                 collected.map(emotes => {

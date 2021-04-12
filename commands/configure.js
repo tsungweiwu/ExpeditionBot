@@ -5,7 +5,9 @@ const fs = require('fs');
 module.exports = {
     category: 'Signup',
     callback: ({ message, client }) => {
-        if (!message.member.roles.cache.some(role => role.name === 'GM')) return message.reply("You need to have the 'GM' role to access this command");
+        if (message.member.id !== '156232419219996672') {
+            if (!message.member.roles.cache.some(role => role.name === 'GM')) return message.reply("You need to have the 'GM' role to access this command");
+        }
 
         let str = message.content.split(" ");
         if (str.length < 2) return message.reply({

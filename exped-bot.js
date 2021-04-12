@@ -29,9 +29,9 @@ client.on('ready', () => {
 
     guildConfig.forEach(guild => {
         schedule.fort(client, guild);
-        schedule.morning(client, guild);
-        schedule.evening(client, guild);
-        schedule.bonus(client, guild);
+        if (guild.isMorning) schedule.morning(client, guild);
+        if (guild.isEvening) schedule.evening(client, guild);
+        if (guild.isBonus) schedule.bonus(client, guild);
     })
 
     // client.guilds.cache.forEach((guild) => {
@@ -57,9 +57,13 @@ client.on('guildCreate', guild => {
         "raChannelId": "",
         "spamChannelId": "",
         "mentions": "",
+        "fortMention": "",
         "isTimeVote": false,
         "job1": {},
-        "job2": {}
+        "job2": {},
+        "isMorning": false,
+        "isEvening": false,
+        "isBonus": false
     }
 
     guildConfig.set(guildId, guildMap);

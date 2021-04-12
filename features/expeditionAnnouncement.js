@@ -31,7 +31,7 @@ module.exports = {
             color: '#FFA500'
         };
 
-        client.channels.cache.get(config.channelId).send((config.mentions !== '' ? `<@&${config.mentions}>` : '') + " expeds start in 15 minutes!", {embed: embed}).then(function (message) {
+        client.channels.cache.get(config.channelId).send((config.mentions !== '' ? `<@&${config.mentions}>` : '') + " expeds start in 30 minutes!", {embed: embed}).then(function (message) {
             message.react('✅').then(
                 message.react('❌')).then(
                 message.react('❓')).catch()
@@ -150,7 +150,7 @@ module.exports = {
                 }
             })
 
-            message.awaitReactions((reaction, user) => user.id === message.author.id, {time: (65 * 60000)}).then(collected => {
+            message.awaitReactions((reaction, user) => user.id === message.author.id, {time: (70 * 60000)}).then(collected => {
                 editBool = false;
             })
         }).catch(function () {

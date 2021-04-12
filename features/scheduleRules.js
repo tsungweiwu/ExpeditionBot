@@ -21,7 +21,7 @@ module.exports = {
         // morning
         const morningRule = new schedule.RecurrenceRule();
         morningRule.hour = 9;
-        morningRule.minute = 45;
+        morningRule.minute = 30;
         morningRule.tz = 'Etc/GMT+8';
         //50 12 * * *
         const morningExpeds = schedule.scheduleJob(morningRule, function () {
@@ -41,7 +41,7 @@ module.exports = {
         // evening
         const eveningRule = new schedule.RecurrenceRule();
         eveningRule.hour = 17;
-        eveningRule.minute = 45;
+        eveningRule.minute = 30;
         eveningRule.tz = 'Etc/GMT+8';
         //50 12 * * *
         const eveningExpeds = schedule.scheduleJob(eveningRule, function () {
@@ -58,7 +58,7 @@ module.exports = {
         // Bonus
         const bonusRule = new schedule.RecurrenceRule();
         bonusRule.hour = 15;
-        bonusRule.minute = 45;
+        bonusRule.minute = 30;
         bonusRule.tz = 'Etc/GMT+8';
         bonusRule.dayOfWeek = [0, 6];
         //50 12 * * *
