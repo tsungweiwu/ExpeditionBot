@@ -12,7 +12,7 @@
     },
     "482873002124378113": {
         "name": "KnightRiders",
-        "channelId": "519774750680154123",
+        "channelId": "703722009749880942",
         "fortChannelId": "519774750680154123",
         "raChannelId": "790451126956064778",
         "spamChannelId": "",
@@ -34,13 +34,16 @@
     },
     "543970772260093967": {
         "name": "Spades",
-        "channelId": "",
+        "channelId": "611680920503713895",
         "fortChannelId": "611681012950499328",
         "raChannelId": "696468439224549387",
         "spamChannelId": "696468439224549387",
         "mentions": "611678026119249923",
         "isTimeVote": false,
-        "job1": {},
+        "job1": {
+            "callback": false,
+            "name": "<Anonymous Job 17>"
+        },
         "job2": {}
     }
 }
