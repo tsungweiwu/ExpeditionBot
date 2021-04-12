@@ -2,6 +2,7 @@ const schedule = require('node-schedule')
 
 module.exports = {
     message: function (title, client, config) {
+        if (client.channels.cache.get(config.channelId) === undefined) return;
         const signedMembers = new Map();
         const signedNames = new Map();
         const emojis = ['OnTime', '152', '302', '452', 'Skip'];

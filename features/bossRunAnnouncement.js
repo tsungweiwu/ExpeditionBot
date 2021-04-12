@@ -4,6 +4,9 @@ const fs = require('fs');
 
 module.exports = {
     message: function (title, description, hour, minute, client, config) {
+        if (config.channelId === "") return;
+        if (client.channels.cache.get(config.raChannelId) === undefined) return;
+
         const titleName = {'✅': 'Attending', '❌': 'Not Attending', '❓': 'Tentative'};
         let editBool = true;
         const signedMembers = new Map();

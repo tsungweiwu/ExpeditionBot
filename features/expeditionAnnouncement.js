@@ -3,6 +3,9 @@ const guilds = require('../guildConfig.json');
 
 module.exports = {
     message: function (title, client, config) {
+        if (config.channelId === "") return;
+        if (client.channels.cache.get(config.channelId) === undefined) return;
+
         const titleName = {'✅': 'Attending', '❌': 'Not Attending', '❓': 'Tentative'};
         let editBool = true;
         let signedNames = new Map();
