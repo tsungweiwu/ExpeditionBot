@@ -8,10 +8,7 @@
         "mentions": "",
         "fortMention": "",
         "isTimeVote": false,
-        "job1": {
-            "callback": false,
-            "name": "<Anonymous Job 13>"
-        },
+        "job1": {},
         "job2": {},
         "isMorning": false,
         "isEvening": false,
