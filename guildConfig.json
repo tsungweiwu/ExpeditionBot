@@ -8,7 +8,10 @@
         "mentions": "",
         "fortMention": "",
         "isTimeVote": false,
-        "job1": {},
+        "job1": {
+            "callback": false,
+            "name": "<Anonymous Job 13>"
+        },
         "job2": {},
         "isMorning": false,
         "isEvening": false,
@@ -16,7 +19,7 @@
     },
     "482873002124378113": {
         "name": "KnightRiders",
-        "channelId": "703722009749880942",
+        "channelId": "519774750680154123",
         "fortChannelId": "519774750680154123",
         "raChannelId": "790451126956064778",
         "spamChannelId": "",
