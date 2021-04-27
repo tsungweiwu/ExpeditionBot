@@ -30,7 +30,7 @@ module.exports = {
             return message.reply('successfully cancelled');
         }
 
-        if (str.length >= 2) return message.reply('wrong input');
+        if (str.length > 2) return message.reply('wrong input');
 
         if (Object.entries(guildConfig.get(message.guild.id).job2).length !== 0) return message.reply('There is currently a signup sheet');
 
@@ -61,17 +61,32 @@ module.exports = {
                     if (collected.first().content === 'cancel' || collected.first().content.toLowerCase() === 'c') {
                         return message.reply("Canceled!");
                     }
-                    let time = collected.first().content.split(":");
+                    let timeOfDay = '';
+                    let timeZone = '';
+                    let info = collected.first().content.split(" ");
+                    let time = info[0].split(":");
                     hour = Number(time[0]);
                     minute = Number(time[1]);
 
                     if (hour > 23 || hour < 0 || minute < 0 || minute > 60) return message.reply("Invalid Input");
 
-                    message.reply("Confirm if **" + hour + ":" + minute + "** is correct __(type yes or y to confirm)__.. Will expire in **10** seconds..");
+                    if (info.length >= 2) {
+                        if (info[1].toLowerCase() === 'am' || info[1].toLowerCase() === 'pm') {
+                            timeOfDay = info[1];
+                        }
+                    }
+
+                    if (info.length > 2 && info.length <= 3) {
+                        if (info[2].toLowerCase() === 'et' || info[2].toLowerCase() === 'pt') {
+                            timeZone = info[2];
+                        }
+                    }
+
+                    message.reply("Confirm if **" + hour + ":" + minute + " "  + timeOfDay + " " + timeZone + "** is correct __(type yes or y to confirm)__.. Will expire in **10** seconds..");
                     message.channel.awaitMessages(filter, {max: 1, time: 10000}).then(collected => {
                         if (collected.first().content.toLowerCase() === 'yes' || collected.first().content.toLowerCase() === 'y') {
                             message.reply("You have successfully scheduled the run");
-                            rootAbyss.message(title, description, hour, minute, client, guildConfig.get(message.guild.id));
+                            rootAbyss.message(title, description, hour, minute, timeOfDay, timeZone, client, guildConfig.get(message.guild.id));
                         }
                         else {
                             return message.reply("Canceled!");
@@ -97,6 +112,6 @@ module.exports = {
 
     },
     error: ({ error, command, message, info, client }) => {
-        message.channel.send("Incorrect input!")
+        message.channel.send("Your server has not been configured yet. Please contact admin!")
     }
 }
