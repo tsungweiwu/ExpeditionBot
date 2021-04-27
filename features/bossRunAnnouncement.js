@@ -1,5 +1,5 @@
 const schedule = require('node-schedule')
-const moment = require('moment')
+const moment = require('moment-timezone')
 const fs = require('fs');
 
 module.exports = {
@@ -21,22 +21,22 @@ module.exports = {
             timeStr = `${hour}:${minute} ${timeOfDay} (GMT+8)`;
         } else if (timeOfDay !== undefined && timeZone !== undefined) {
             let dateHour = timeOfDay === 'pm' ? hour + 12 : hour;
-            let date = moment("1946-05-21").set({"hour": dateHour, "minute": minute});
-            let dateZone;
+	    let tempDate = moment("1946-05-21").set({"hour": dateHour, "minute": minute});
+	    let date;
             let dateEt;
             let datePt;
 
             if (timeZone === 'et') {
-                dateZone = date.tz('America/New_York');
-                dateEt = dateZone.format('hh:mm a');
-                datePt = moment(dateZone).tz('Etc/GMT+7').format('hh:mm a');
+		date = tempDate.tz('America/New_York', true)
+                dateEt = date.format('hh:mm a');
+                datePt = moment(date).tz('Etc/GMT+7').format('hh:mm a');
             } else if (timeZone === 'pt') {
-                dateZone = date.tz('Etc/GMT+7');
-                dateEt = moment(dateZone).tz('America/New_York').format('hh:mm a');
-                datePt = dateZone.format('hh:mm a');
+		date = tempDate.tz('Etc/GMT+7', true)
+                dateEt = moment(date).tz('America/New_York').format('hh:mm a');
+                datePt = date.format('hh:mm a');
             }
-            let dateServer = moment(dateZone).tz('Etc/GMT+8').format('hh:mm a');
-            let serverTime = moment(dateZone).tz('Etc/GMT+8');
+            let dateServer = moment(date).tz('Etc/GMT+8').format('hh:mm a');
+            let serverTime = moment(date).tz('Etc/GMT+8');
 
             hour = serverTime.hour();
             minute = serverTime.minute();
