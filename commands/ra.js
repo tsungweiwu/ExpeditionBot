@@ -42,15 +42,15 @@ module.exports = {
         let hour;
         let minute;
 
-        message.reply("Please enter a **title**.. Will expire in **10** seconds..");
-        message.channel.awaitMessages(filter, {max: 1, time: 10000}).then(collected => {
+        message.reply("Please enter a **title**.. Will expire in **20** seconds..");
+        message.channel.awaitMessages(filter, {max: 1, time: 20000}).then(collected => {
             if (collected.first().content === 'cancel' || collected.first().content.toLowerCase() === 'c') {
                 return message.reply("Canceled!");
             }
             title = collected.first().content;
 
-            message.reply("Please enter a **description**.. Will expire in **10** seconds..");
-            message.channel.awaitMessages(filter, {max: 1, time: 10000}).then(collected => {
+            message.reply("Please enter a **description**.. Will expire in **20** seconds..");
+            message.channel.awaitMessages(filter, {max: 1, time: 20000}).then(collected => {
                 if (collected.first().content === 'cancel' || collected.first().content.toLowerCase() === 'c') {
                     return message.reply("Canceled!");
                 }
@@ -82,8 +82,8 @@ module.exports = {
                         }
                     }
 
-                    message.reply("Confirm if **" + hour + ":" + minute + " "  + timeOfDay + " " + timeZone + "** is correct __(type yes or y to confirm)__.. Will expire in **10** seconds..");
-                    message.channel.awaitMessages(filter, {max: 1, time: 10000}).then(collected => {
+                    message.reply("Confirm if **" + hour + ":" + minute + " "  + timeOfDay + " " + timeZone + "** is correct __(type yes or y to confirm)__.. Will expire in **20** seconds..");
+                    message.channel.awaitMessages(filter, {max: 1, time: 20000}).then(collected => {
                         if (collected.first().content.toLowerCase() === 'yes' || collected.first().content.toLowerCase() === 'y') {
                             message.reply("You have successfully scheduled the run");
                             rootAbyss.message(title, description, hour, minute, timeOfDay, timeZone, client, guildConfig.get(message.guild.id));
