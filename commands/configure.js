@@ -79,10 +79,10 @@ module.exports = {
                 }
 
                 if (collected.first().content.toLowerCase() === 'none') {
-                    guildInfo.channelId = '';
+                    guildInfo.fortChannelId = '';
                 } else {
                     if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
-                    guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                    guildInfo.fortChannelId = collected.first().content.replace(/\D/g, '');
                 }
 
                 guildConfig.set(message.guild.id, guildInfo);
@@ -106,10 +106,10 @@ module.exports = {
                 }
 
                 if (collected.first().content.toLowerCase() === 'none') {
-                    guildInfo.channelId = '';
+                    guildInfo.raChannelId = '';
                 } else {
                     if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
-                    guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                    guildInfo.raChannelId = collected.first().content.replace(/\D/g, '');
                 }
 
                 guildConfig.set(message.guild.id, guildInfo);
@@ -133,10 +133,10 @@ module.exports = {
                 }
 
                 if (collected.first().content.toLowerCase() === 'none') {
-                    guildInfo.channelId = '';
+                    guildInfo.spamChannelId = '';
                 } else {
                     if (!collected.first().content.includes('#')) return message.reply('Wrong Input');
-                    guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                    guildInfo.spamChannelId = collected.first().content.replace(/\D/g, '');
                 }
 
                 guildConfig.set(message.guild.id, guildInfo);
@@ -160,10 +160,10 @@ module.exports = {
                 }
 
                 if (collected.first().content.toLowerCase() === 'none') {
-                    guildInfo.channelId = '';
+                    guildInfo.mentions = '';
                 } else {
                     if (!collected.first().content.includes('@')) return message.reply('Wrong Input');
-                    guildInfo.channelId = collected.first().content.replace(/\D/g, '');
+                    guildInfo.mentions = collected.first().content.replace(/\D/g, '');
                 }
 
                 guildConfig.set(message.guild.id, guildInfo);
