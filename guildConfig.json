@@ -64,5 +64,20 @@
         "isMorning": true,
         "isEvening": true,
         "isBonus": true
+    },
+    "824653099817369671": {
+        "name": "peacherino's server",
+        "channelId": "",
+        "fortChannelId": "",
+        "raChannelId": "838131416767135745",
+        "spamChannelId": "838131509788803122",
+        "mentions": "",
+        "fortMention": "",
+        "isTimeVote": false,
+        "job1": {},
+        "job2": {},
+        "isMorning": false,
+        "isEvening": false,
+        "isBonus": false
     }
 }
