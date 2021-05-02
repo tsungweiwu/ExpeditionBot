@@ -4,6 +4,8 @@ const infoMap = new Map([
     ['.flames', {'type' : 'image', 'img' : 'https://i.imgur.com/UPrSqQu.png'}],
     ['.statcap', {'type' : 'image', 'img' : 'https://i.imgur.com/PVEouLi.png'}],
     ['.hyper', {'type' : 'image', 'img' : 'https://i.imgur.com/0wOlXqr.png'}],
+    ['.pba', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/541458491361984513/684303643905753112/unknown.png'}],
+    ['.pba2', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/712890391011131394/838245030175047760/Screen_Shot_2021-05-01_at_10.45.52_PM.png'}],
     ['.hilla', {'type' : 'embed', embed: {
             image: {
                 url: 'https://media.discordapp.net/attachments/590455709334765568/825850493674061874/image0.gif'
