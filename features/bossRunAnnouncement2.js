@@ -36,6 +36,8 @@ module.exports = {
                 datePt = date.format('hh:mm a');
             } else {
                 date = tempDate.tz('Etc/GMT+8', true)
+                dateEt = moment(date).tz('America/New_York').format('hh:mm a');
+                datePt = moment(date).tz('Etc/GMT+7').format('hh:mm a');
             }
             let dateServer = moment(date).tz('Etc/GMT+8').format('hh:mm a');
             let serverTime = moment(date).tz('Etc/GMT+8');
@@ -383,6 +385,9 @@ module.exports = {
                                         fetchedMsg.edit({embed: embed});
                                     }
                                 })
+                            }).catch(error => {
+                                console.log(error)
+                                message.reply('Something went wrong, could not add member!')
                             })
                         }
                         // else {
@@ -447,6 +452,9 @@ module.exports = {
                                         fetchedMsg.edit({embed: embed});
                                     }
                                 })
+                            }).catch(error => {
+                                console.log(error)
+                                message.reply('Something went wrong, could not add member!')
                             })
                         }
                     } catch (error) {

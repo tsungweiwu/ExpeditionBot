@@ -42,15 +42,15 @@ module.exports = {
         let hour;
         let minute;
 
-        message.reply("Please enter a **title**.. Will expire in **10** seconds..");
-        message.channel.awaitMessages(filter, {max: 1, time: 10000}).then(collected => {
+        message.reply("Please enter a **title**.. Will expire in **20** seconds..");
+        message.channel.awaitMessages(filter, {max: 1, time: 20000}).then(collected => {
             if (collected.first().content === 'cancel' || collected.first().content.toLowerCase() === 'c') {
                 return message.reply("Canceled!");
             }
             title = collected.first().content;
 
-            message.reply("Please enter a **description**.. Will expire in **10** seconds..");
-            message.channel.awaitMessages(filter, {max: 1, time: 10000}).then(collected => {
+            message.reply("Please enter a **description**.. Will expire in **20** seconds..");
+            message.channel.awaitMessages(filter, {max: 1, time: 20000}).then(collected => {
                 if (collected.first().content === 'cancel' || collected.first().content.toLowerCase() === 'c') {
                     return message.reply("Canceled!");
                 }

@@ -318,6 +318,7 @@ module.exports = {
                         let memId = member[1].replace(/[^a-zA-Z0-9]/g, '');
                         if (isNumeric(memId)) {
                             message.guild.members.fetch().then(users => {
+                                console.log(users)
                                 let user = users.get(memId);
                                 if (user === undefined) return message.reply('user does not exist');
 
@@ -385,6 +386,9 @@ module.exports = {
                                         fetchedMsg.edit({embed: embed});
                                     }
                                 })
+                            }).catch(error => {
+                                console.log(error)
+                                message.reply('Something went wrong, could not add member!')
                             })
                         }
                         // else {
@@ -449,6 +453,9 @@ module.exports = {
                                         fetchedMsg.edit({embed: embed});
                                     }
                                 })
+                            }).catch(error => {
+                                console.log(error)
+                                message.reply('Something went wrong, could not add member!')
                             })
                         }
                     } catch (error) {
