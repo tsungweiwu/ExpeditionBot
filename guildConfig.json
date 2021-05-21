@@ -26,8 +26,8 @@
         "job1": {},
         "job2": {},
         "isMorning": true,
-        "isEvening": true,
-        "isBonus": true
+        "isEvening": false,
+        "isBonus": false
     },
     "712862385542791228": {
         "name": "Immortal",
@@ -40,9 +40,9 @@
         "isTimeVote": true,
         "job1": {},
         "job2": {},
-        "isMorning": true,
-        "isEvening": true,
-        "isBonus": true
+        "isMorning": false,
+        "isEvening": false,
+        "isBonus": false
     },
     "543970772260093967": {
         "name": "Spades",
