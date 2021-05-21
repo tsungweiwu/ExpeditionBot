@@ -23,13 +23,16 @@ module.exports = {
                             name: ':dragon_face: Regular', value: '`.cygnus` `.pinkbean` `.horntail` `.zakum`', inline: true
                         },
                         {
-                            name: ':notebook_with_decorative_cover: Guides', value: '`.buffs` `.cubes` `.flames` `.statcap` `.hyper` `.pba` `.pba2`', inline: true
+                            name: ':notebook_with_decorative_cover: Guides', value: '`.buffs` `.cubes` `.flames` `.statcap` `.hyper` `.pba` `.pba2` `.link`', inline: true
                         },
                         {
                             name: ':watch: Get Current Server Time', value: '`.time`', inline: true
                         },
                         {
                             name: ':notepad_spiral: Create RA Signup Sheet', value: '`.ra`', inline: true
+                        },
+                        {
+                            name: ':video_game: Fun', value: '`.nexon` `.ask` `.mock`', inline: true
                         },
                         {
                             name: ':timer: AB Calculator', value: '`.calc 00:00`'
