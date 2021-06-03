@@ -10,6 +10,7 @@ const infoMap = new Map([
     ['.nexon', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/519774750680154123/837032001722384425/image0.gif'}],
     ['.omw', {'type' : 'image', 'img' : 'https://i.giphy.com/media/QXVU87pqliN9IZosxk/giphy.webp'}],
     ['.milk', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/712890391011131394/849731100108259399/milk.png?width=920&height=920'}],
+    ['.nya', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/683860867082616962.gif?v=1'}],
     ['.hilla', {'type' : 'embed', embed: {
             image: {
                 url: 'https://media.discordapp.net/attachments/590455709334765568/825850493674061874/image0.gif'
