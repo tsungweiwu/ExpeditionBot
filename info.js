@@ -8,13 +8,28 @@ const infoMap = new Map([
     ['.pba2', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/712890391011131394/838245030175047760/Screen_Shot_2021-05-01_at_10.45.52_PM.png'}],
     ['.link', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/555719232579698708/845371392886571058/image0.png'}],
     ['.nexon', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/519774750680154123/837032001722384425/image0.gif'}],
-    ['.omw', {'type' : 'image', 'img' : 'https://i.giphy.com/media/QXVU87pqliN9IZosxk/giphy.webp'}],
     ['.milk', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/712890391011131394/849731100108259399/milk.png?width=920&height=920'}],
     ['.nya', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/683860867082616962.gif?v=1'}],
     ['.catroll', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/628636757562228737.gif?v=1'}],
     ['.cowroll', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/729977677909327944.gif'}],
     ['.llamaroll', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/729977658116538448.gif?v=1'}],
     ['.hamroll', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/729977641653764146.gif?v=1'}],
+    ['.magnus', {'type' : 'embed', embed: {
+            image: {
+                url: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/884d5e19-e82d-49bd-acec-58e56eafbb7a/d6f6qjv-55887e39-7840-44f3-ab39-ebbb3c85c0be.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg4NGQ1ZTE5LWU4MmQtNDliZC1hY2VjLTU4ZTU2ZWFmYmI3YVwvZDZmNnFqdi01NTg4N2UzOS03ODQwLTQ0ZjMtYWIzOS1lYmJiM2M4NWMwYmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.r9Unu4aeWJOTKk3tnkc5lPxUk4f7zP9hVIbJ4u5EHME'
+            },
+            color: 15406156,
+            title: "Magnus (Commander Boss)",
+            description: "[Video Guide](https://www.youtube.com/watch?v=xLUqJIle7AM)",
+            footer: {
+                text: '═════ Boss Info (Party/Multi) ═════\n' +
+                    'Sim \t HP: 72.675 b | Crit Resist: 40%\n' +
+                    'Hard \t HP: 405.0 b | Crit Resist: 50%\n' +
+                    '═════ Boss Info (Single) ═════\n' +
+                    'Sim \t HP: 9.69 b | Crit Resist: 40%\n' +
+                    'Hard \t HP: 54.0 b | Crit Resist: 50%\n'
+            }
+        }}],
     ['.hilla', {'type' : 'embed', embed: {
             image: {
                 url: 'https://media.discordapp.net/attachments/590455709334765568/825850493674061874/image0.gif'

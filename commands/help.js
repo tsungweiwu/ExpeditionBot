@@ -14,7 +14,7 @@ module.exports = {
                     },
                     fields: [
                         {
-                            name: ':lion_face: Commander', value: '`.hilla` `.vonleon`', inline: true
+                            name: ':lion_face: Commander', value: '`.magnus` `.hilla` `.vonleon`', inline: true
                         },
                         {
                             name: ':chicken: Root Abyss', value: '`.vellum` `.queen` `.pierre` `.vonbon`', inline: true
@@ -32,7 +32,7 @@ module.exports = {
                             name: ':notepad_spiral: Create RA Signup Sheet', value: '`.ra`', inline: true
                         },
                         {
-                            name: ':video_game: Fun', value: '`.nexon` `.ask` `.mock` `.omw`', inline: true
+                            name: ':video_game: Fun', value: '`.nexon` `.ask` `.mock` `.roast` `.qod`', inline: true
                         },
                         {
                             name: ':timer: AB Calculator', value: '`.calc 00:00`', inline: true
