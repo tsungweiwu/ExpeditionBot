@@ -12,6 +12,10 @@ const infoMap = require('./info.js');
 let infoHelper = require('./features/infoHelper');
 const schedule = require("./features/scheduleRules");
 
+let deletedContent = '';
+let deletedAuthor;
+let deletedTime = '';
+
 client.on('ready', () => {
     new WOKCommands(client, {
         commandsDir: 'commands',
@@ -100,7 +104,34 @@ client.on('message', message => {
     if (infoMap.has(message.content)) {
         infoHelper.info(message, infoMap, Discord);
     }
+
+    if (message.content === '.snipe') {
+        if (deletedContent === '' || deletedAuthor === null) return message.channel.send('No Messages Found')
+        console.log(deletedTime)
+        message.channel.send({
+            embed: {
+                author: {
+                    name: deletedAuthor.username,
+                    icon_url: `https://cdn.discordapp.com/avatars/${deletedAuthor.id}/${deletedAuthor.avatar}.png?size=256`
+                },
+                description: deletedContent,
+                footer: {
+                    text: deletedTime
+                }
+             }
+        }).then(r => {
+        })
+    }
     // client.channels.cache.get('783513086429888515').send("hi")
 });
+
+client.on('messageDelete', messageDelete => {
+    deletedContent = messageDelete.content
+    deletedAuthor = messageDelete.author
+    console.log(messageDelete)
+
+    let d = new Date(messageDelete.createdTimestamp);
+    deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+})
 
 client.login(TOKEN);
