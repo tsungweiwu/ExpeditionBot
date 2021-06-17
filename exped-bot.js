@@ -16,6 +16,10 @@ let deletedContent = '';
 let deletedAuthor;
 let deletedTime = '';
 
+let updatedContent = '';
+let updatedAuthor;
+let updatedTime = '';
+
 client.on('ready', () => {
     new WOKCommands(client, {
         commandsDir: 'commands',
@@ -122,16 +126,39 @@ client.on('message', message => {
         }).then(r => {
         })
     }
-    // client.channels.cache.get('783513086429888515').send("hi")
+
+    if (message.content === '.edit') {
+        if (updatedContent === '' || updatedAuthor === null) return message.channel.send('No Messages Found')
+        message.channel.send({
+            embed: {
+                author: {
+                    name: updatedAuthor.username,
+                    icon_url: `https://cdn.discordapp.com/avatars/${updatedAuthor.id}/${updatedAuthor.avatar}.png?size=256`
+                },
+                description: updatedContent,
+                footer: {
+                    text: updatedTime
+                }
+            }
+        }).then(r => {
+        })
+    }
 });
 
 client.on('messageDelete', messageDelete => {
     deletedContent = messageDelete.content
     deletedAuthor = messageDelete.author
-    console.log(messageDelete)
 
     let d = new Date(messageDelete.createdTimestamp);
     deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+})
+
+client.on('messageUpdate', messageUpdate => {
+    updatedContent = messageUpdate.content
+    updatedAuthor = messageUpdate.author
+
+    let d = new Date(messageUpdate.createdTimestamp);
+    updatedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
 })
 
 client.login(TOKEN);
