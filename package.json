@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@iamtraction/google-translate": "github:iamtraction/google-translate",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
