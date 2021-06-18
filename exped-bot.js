@@ -4,6 +4,7 @@ const WOKCommands = require('wokcommands')
 const client = new Discord.Client();
 const TOKEN = process.env.TOKEN;
 const fs = require('fs');
+const translate = require('@iamtraction/google-translate');
 
 // data
 const infoMap = require('./info.js');
@@ -141,6 +142,21 @@ client.on('message', message => {
                 }
             }
         }).then(r => {
+        })
+    }
+
+    if (message.content.startsWith('.tt')) {
+        let tMessage = message.content.split(" ");
+        if (tMessage.length <= 1) return message.channel.send('Please **include the language you wish to translate to after the command** AND **include the message to translate after the language**')
+
+        let lang = tMessage[1];
+        let mNum = 4 + lang.length;
+        let msg = message.content.substr(mNum);
+
+        translate(msg, {from: 'en', to: lang}).then(res => {
+            return message.channel.send(res.text);
+        }).catch(err => {
+            return message.channel.send(err);
         })
     }
 });
