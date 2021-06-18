@@ -5,9 +5,6 @@ module.exports = {
     callback: ({ message }) => {
         let channel = message.channel; // <-- your pre-filled channel variable
 
-        let msgArg = message.content.split(" ");
-        if (msgArg.length <= 1) return channel.send('Please **include the message to translate after the command** OR **reply a message you wish to translate using this command only**.')
-
         if (message.reference !== null) {
             channel.messages.fetch(message.reference.messageID).then(msg => {
                 tr(msg.content, {to: 'en'}).then(res => {
@@ -17,6 +14,9 @@ module.exports = {
                 })
             })
         } else {
+            let msgArg = message.content.split(" ");
+            if (msgArg.length <= 1) return channel.send('Please **include the message to translate after the command** OR **reply a message you wish to translate using this command only**.')
+
             let msg = message.content.substr(2);
 
             tr(msg, {to: 'en'}).then(res => {
