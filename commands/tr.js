@@ -17,7 +17,7 @@ module.exports = {
             let msgArg = message.content.split(" ");
             if (msgArg.length <= 1) return channel.send('Please **include the message to translate after the command** OR **reply a message you wish to translate using this command only**.')
 
-            let msg = message.content.substr(2);
+            let msg = message.content.substr(3);
 
             tr(msg, {to: 'en'}).then(res => {
                 return channel.send(res.text);
