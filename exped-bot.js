@@ -167,14 +167,6 @@ client.on('message', message => {
     }
 });
 
-client.on('messageDelete', messageDelete => {
-    deletedContent = messageDelete.content
-    deletedAuthor = messageDelete.author
-
-    let d = new Date(messageDelete.createdTimestamp);
-    deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
-})
-
 client.on('messageDelete', async message => {
     if (!message.guild) return;
 
