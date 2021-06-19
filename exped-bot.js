@@ -162,7 +162,7 @@ client.on('message', message => {
         })
     }
 
-    if (message.content.includes('smacks')) {
+    if (message.content.includes('smack')) {
         return message.channel.send('https://cdn.discordapp.com/emojis/822693298640388147.gif?v=1');
     }
 });
