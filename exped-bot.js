@@ -111,7 +111,7 @@ client.on('message', message => {
     }
 
     if (message.content === '.snipe') {
-        if (message.channel.guild.id === '482873002124378113') return;
+        // if (message.channel.guild.id === '482873002124378113') return;
         if (deletedContent === '' || deletedAuthor === null) return message.channel.send('No Messages Found')
         console.log(deletedTime)
         message.channel.send({
@@ -168,6 +168,32 @@ client.on('message', message => {
 });
 
 client.on('messageDelete', messageDelete => {
+    deletedContent = messageDelete.content
+    deletedAuthor = messageDelete.author
+
+    let d = new Date(messageDelete.createdTimestamp);
+    deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+})
+
+client.on('messageDelete', async message => {
+    if (!message.guild) return;
+
+    const fetchedLogs = await message.guild.fetchAuditLogs({
+        limit: 1,
+        type: 'MESSAGE_DELETE',
+    });
+    // Since there's only 1 audit log entry in this collection, grab the first one
+    const deletionLog = fetchedLogs.entries.first();
+
+    // Perform a coherence check to make sure that there's *something*
+    if (!deletionLog) return console.log(`A message by ${message.author.tag} was deleted, but no relevant audit logs were found.`);
+
+    // Now grab the user object of the person who deleted the message
+    // Also grab the target of this action to double-check things
+    const { executor, target } = deletionLog;
+
+    if (executor.id === '468574747106476062' || executor.id === '156232419219996672') return;
+
     deletedContent = messageDelete.content
     deletedAuthor = messageDelete.author
 
