@@ -159,6 +159,14 @@ client.on('message', message => {
             return message.channel.send(err);
         })
     }
+
+    if (message.content.includes('smack')) {
+        return message.channel.send('https://cdn.discordapp.com/emojis/822693298640388147.gif?v=1');
+    }
+
+    if (message.content.includes('evie')) {
+        return message.channel.send('https://cdn.discordapp.com/emojis/855132720911876106.gif?v=1');
+    }
 });
 
 client.on('messageDelete', messageDelete => {
