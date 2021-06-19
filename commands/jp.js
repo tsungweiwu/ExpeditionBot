@@ -6,16 +6,12 @@ module.exports = {
         let channel = message.channel; // <-- your pre-filled channel variable
 
         request({
-            url: "https://evilinsult.com/generate_insult.php?lang=en&amp;type=json",
+            url: "http://jservice.io/api/random",
             json: true
         }, (err, response, body) => {
-            if (message.content.includes('156232419219996672')) {
-                return channel.send('I shall not disrespect my creator <3')
-            }
-
             if (!message.author.bot) {
                 // The author of the last message wasn't a bot
-                return channel.send(body);
+                return channel.send(body[0].question + '\n||' + body[0].answer + '||\n' + 'Category: ' + body[0].category.title);
             }
         });
     }

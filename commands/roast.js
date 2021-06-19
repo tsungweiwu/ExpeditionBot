@@ -6,7 +6,7 @@ module.exports = {
         let channel = message.channel; // <-- your pre-filled channel variable
 
         request({
-            url: "https://evilinsult.com/generate_insult.php?lang=en&type=text",
+            url: "https://evilinsult.com/generate_insult.php?lang=en&amp;type=json",
             json: true
         }, (err, response, body) => {
             if (message.content.includes('156232419219996672')) {

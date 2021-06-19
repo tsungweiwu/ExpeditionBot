@@ -6,16 +6,13 @@ module.exports = {
         let channel = message.channel; // <-- your pre-filled channel variable
 
         request({
-            url: "https://evilinsult.com/generate_insult.php?lang=en&amp;type=json",
+            url: "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit",
             json: true
         }, (err, response, body) => {
-            if (message.content.includes('156232419219996672')) {
-                return channel.send('I shall not disrespect my creator <3')
-            }
-
             if (!message.author.bot) {
                 // The author of the last message wasn't a bot
-                return channel.send(body);
+                if (body.joke !== undefined) return channel.send(body.joke);
+                else return channel.send(body.setup + '\n||' + body.delivery + '||');
             }
         });
     }
