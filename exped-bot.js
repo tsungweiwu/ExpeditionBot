@@ -160,12 +160,8 @@ client.on('message', message => {
         })
     }
 
-    if (message.content.includes('smack')) {
+    if (message.content.includes('smacks')) {
         return message.channel.send('https://cdn.discordapp.com/emojis/822693298640388147.gif?v=1');
-    }
-
-    if (message.content.includes('evie')) {
-        return message.channel.send('https://cdn.discordapp.com/emojis/855132720911876106.gif?v=1');
     }
 });
 

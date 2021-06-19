@@ -17,6 +17,8 @@ const infoMap = new Map([
     ['.smack1', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/822693298640388147.gif?v=1'}],
     ['.smack2', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/826628148421591051.gif?v=1'}],
     ['.wiggle', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/855132720911876106.gif?v=1'}],
+    ['.hamshake', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/833556472356798476.gif?v=1'}],
+    ['.slap', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/817909791757565962.gif?v=1'}],
     ['.magnus', {'type' : 'embed', embed: {
             image: {
                 url: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/884d5e19-e82d-49bd-acec-58e56eafbb7a/d6f6qjv-55887e39-7840-44f3-ab39-ebbb3c85c0be.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg4NGQ1ZTE5LWU4MmQtNDliZC1hY2VjLTU4ZTU2ZWFmYmI3YVwvZDZmNnFqdi01NTg4N2UzOS03ODQwLTQ0ZjMtYWIzOS1lYmJiM2M4NWMwYmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.r9Unu4aeWJOTKk3tnkc5lPxUk4f7zP9hVIbJ4u5EHME'
