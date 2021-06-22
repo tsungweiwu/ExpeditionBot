@@ -19,6 +19,10 @@ const infoMap = new Map([
     ['.wiggle', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/855132720911876106.gif?v=1'}],
     ['.hamshake', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/833556472356798476.gif?v=1'}],
     ['.slap', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/817909791757565962.gif?v=1'}],
+    ['.wut', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/513051253706850324/856743987083608084/fe87958723b52a353f80ba1349780cab-sticker.gif'}],
+    ['.randy', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/513051253706850324/856740869863505920/f35e7a6ea2bd3e2ae3893e7f54f075a4-sticker.gif'}],
+    ['.kick', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/513051253706850324/856745632159760424/ed38788a2ff85303f3be93f8b6fd0db6-sticker.gif'}],
+    ['.run', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/513051253706850324/856746091742625802/d117ed4c16fb3d9fb623d10f7f1d2bee-sticker.gif'}],
     ['.magnus', {'type' : 'embed', embed: {
             image: {
                 url: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/884d5e19-e82d-49bd-acec-58e56eafbb7a/d6f6qjv-55887e39-7840-44f3-ab39-ebbb3c85c0be.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg4NGQ1ZTE5LWU4MmQtNDliZC1hY2VjLTU4ZTU2ZWFmYmI3YVwvZDZmNnFqdi01NTg4N2UzOS03ODQwLTQ0ZjMtYWIzOS1lYmJiM2M4NWMwYmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.r9Unu4aeWJOTKk3tnkc5lPxUk4f7zP9hVIbJ4u5EHME'
