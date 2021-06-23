@@ -12,8 +12,8 @@ module.exports = {
             json: true
         }, (err, response, body) => {
             if (!message.author.bot) {
-                // The author of the last message wasn't a bot
-                if (body.title.includes('No Definitions')) return channel.send(body.message);
+                // The author of the last message wasn't a bot\
+                if (body.title !== undefined) return channel.send(body.message);
                 let definitions = [];
                 body.map(words => {
                     words.meanings.map(meaning => {
