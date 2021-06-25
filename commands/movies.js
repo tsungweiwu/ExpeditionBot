@@ -13,7 +13,7 @@ module.exports = {
 
         if (str[1] === 'add') {
             if (str[2] === undefined) return message.reply('Please add movie title')
-            let movieTitle = content.substr(12);
+            let movieTitle = content.substr(12) + ' - ' + message.author.tag;
             myArray.push(movieTitle)
         } else if (str[1] === 'rm') {
             if (str[2] === undefined) return message.reply('Please select the movie number to delete')

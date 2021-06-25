@@ -13,7 +13,7 @@ module.exports = {
 
         if (str[1] === 'add') {
             if (str[2] === undefined) return message.reply('Please add restaurant name')
-            let restaurantTitle = content.substr(10);
+            let restaurantTitle = content.substr(10) + ' - ' + message.author.tag;
             console.log(restaurantTitle)
             myArray.push(restaurantTitle)
         } else if (str[1] === 'rm') {

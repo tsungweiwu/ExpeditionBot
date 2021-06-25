@@ -1,4 +1,6 @@
 guildConfig.json
+movies.json
+restaurants.json
 # Logs
 logs
 *.log
