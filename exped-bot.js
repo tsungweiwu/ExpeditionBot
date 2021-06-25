@@ -168,21 +168,23 @@ client.on('message', message => {
 });
 
 client.on('messageDelete', messageDelete => {
-    if (messageDelete.channel.guild.id !== '472829226094166034') return;
-    deletedContent = messageDelete.content
-    deletedAuthor = messageDelete.author
+    if (messageDelete.channel.guild.id === '472829226094166034') {
+        deletedContent = messageDelete.content
+        deletedAuthor = messageDelete.author
 
-    let d = new Date(messageDelete.createdTimestamp);
-    deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+        let d = new Date(messageDelete.createdTimestamp);
+        deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+    }
 })
 
 client.on('messageUpdate', messageUpdate => {
-    if (messageDelete.channel.guild.id !== '472829226094166034') return;
-    updatedContent = messageUpdate.content
-    updatedAuthor = messageUpdate.author
+    if (messageUpdate.channel.guild.id === '472829226094166034') {
+        updatedContent = messageUpdate.content
+        updatedAuthor = messageUpdate.author
 
-    let d = new Date(messageUpdate.createdTimestamp);
-    updatedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+        let d = new Date(messageUpdate.createdTimestamp);
+        updatedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+    }
 })
 
 client.login(TOKEN);
