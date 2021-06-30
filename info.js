@@ -1,5 +1,7 @@
 const infoMap = new Map([
     ['.buffs', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/790451126956064778/796177528129060894/unknown.png'}],
+    ['.mabuffs', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/699480933673205762/859682518877863976/MSM_food_buffs_mag.png'}],
+    ['.pabuffs', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/699480933673205762/859682533545345074/PA_BUFFS.png'}],
     ['.cubes', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/723019017513861151/822432778674634782/image0.png?width=450&height=686'}],
     ['.flames', {'type' : 'image', 'img' : 'https://i.imgur.com/UPrSqQu.png'}],
     ['.statcap', {'type' : 'image', 'img' : 'https://i.imgur.com/PVEouLi.png'}],
