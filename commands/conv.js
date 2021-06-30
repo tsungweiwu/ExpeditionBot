@@ -4,7 +4,8 @@ module.exports = {
         let str = message.content.split(" ");
         let deg = str[1];
         let temperature = Number(str[2]);
-        if (!isNaN(temperature)) {
+
+        if (!isNaN(temperature) && !message.author.bot) {
             if (deg === 'f') {
                 let convertedTemp = (temperature * 9/5) + 32;
                 return message.channel.send(temperature + ' c = ' + convertedTemp + ' f');
