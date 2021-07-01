@@ -1,6 +1,7 @@
 guildConfig.json
 movies.json
 restaurants.json
+client_secret.json
 # Logs
 logs
 *.log

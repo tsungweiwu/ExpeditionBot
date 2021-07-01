@@ -5,7 +5,7 @@ let fort = require('./fortAnnouncement');
 
 module.exports = {
     fort: function(client, config) {
-        if (config.isTimeVote) return;
+        if (config.name !== "milk") return;
         // fort
         const fortRule = new schedule.RecurrenceRule();
         fortRule.hour = 19;
