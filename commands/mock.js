@@ -5,6 +5,7 @@ module.exports = {
 
         if (message.reference !== null) {
             channel.messages.fetch(message.reference.messageID).then(msg => {
+                if (msg.content === '.mock') return message.channel.send('Yeah.. Nice try lol');
                 if (!msg.author.bot) {
                     // The author of the last message wasn't a bot
                     return message.channel.send(
@@ -17,6 +18,7 @@ module.exports = {
                 .fetch({limit: 2})
                 .then((messages) => {
                     let lastMessage = messages.last();
+                    if (lastMessage.content === '.mock') return message.channel.send('Yeah.. Nice try lol');
 
                     if (!lastMessage.author.bot) {
                         // The author of the last message wasn't a bot
