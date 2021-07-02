@@ -2,6 +2,7 @@ const {google} = require("googleapis");
 
 module.exports = {
     callback: async ({ message, instance }) => {
+        if (message.guild.id !== "472829226094166034") return;
         try {
             const auth = new google.auth.GoogleAuth({
                 keyFile: "client_secret.json",
