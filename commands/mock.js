@@ -30,10 +30,17 @@ module.exports = {
     }
 }
 
+const isUpperCase = char => char.charCodeAt(0) >= 65 && char.charCodeAt(0)<= 90;
+const isLowerCase = char => char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122;
+
 function firstLetterUppercase(input) {
     let res = "";
     for (let i = 0; i < input.length; i++) {
-        res += i % 2 === 0 ? input.charAt(i).toUpperCase() : input.charAt(i);
+        if (i % 2 === 0) {
+            res += isUpperCase(input.charAt(i)) ? input.charAt(i) : input.charAt(i).toUpperCase();
+        } else {
+            res += isLowerCase(input.charAt(i)) ? input.charAt(i) : input.charAt(i).toLowerCase();
+        }
     }
     return res;
 }
