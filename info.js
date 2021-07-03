@@ -20,7 +20,6 @@ const infoMap = new Map([
     ['.s2', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/826628148421591051.gif?v=1'}],
     ['.wiggle', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/855132720911876106.gif?v=1'}],
     ['.wiggle2', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/753276531278741604.gif?v=1'}],
-    ['.hamshake', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/833556472356798476.gif?v=1'}],
     ['.slap', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/817909791757565962.gif?v=1'}],
     ['.wut', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/856749343642353685.gif?v=1'}],
     ['.randy', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/856754793171255316.gif?v=1'}],

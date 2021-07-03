@@ -15,7 +15,7 @@ module.exports = {
                     fields: [
                         {
                             name: ':smile: Emojis', value: '`.nexon` `.nya` `.catroll` `.cowroll` `.llamaroll` `.hamroll` `.s1` `.s2` ' +
-                                '`.wiggle` `.wiggle2` `.hamshake` `.slap` `.wut` `.randy` `.kick` `.run` `.flop` `.pole` `.shoot`', inline: true
+                                '`.wiggle` `.wiggle2` `.slap` `.wut` `.randy` `.kick` `.run` `.flop` `.pole` `.shoot`', inline: true
                         },
                     ]
                 },
