@@ -186,7 +186,6 @@ module.exports = {
                                 }
 
                                 if (signedNames.has('✅')) {
-                                    console.log('has')
                                     let tempArray = signedNames.get('✅');
                                     let tempIds = signedMembers.get('✅');
 
@@ -251,7 +250,6 @@ module.exports = {
                                 }
 
                                 if (signedNames.has('✅')) {
-                                    console.log('has')
                                     let tempArray = signedNames.get('✅');
                                     let tempIds = signedMembers.get('✅');
 
@@ -297,8 +295,6 @@ module.exports = {
                     if (editBool) {
                         message.edit({embed: embed});
                     }
-                    console.log(signedNames);
-                    console.log(signedMembers);
                 }
                 if (!reaction.message.guild) return;
 
@@ -318,7 +314,6 @@ module.exports = {
                         let memId = member[1].replace(/[^a-zA-Z0-9]/g, '');
                         if (isNumeric(memId)) {
                             message.guild.members.fetch().then(users => {
-                                console.log(users)
                                 let user = users.get(memId);
                                 if (user === undefined) return message.reply('user does not exist');
 
@@ -400,7 +395,6 @@ module.exports = {
                 }
 
                 if (message.content.startsWith(".rm")) {
-                    console.log(1 + ' ' + messageId);
                     let member = message.content.split(" ");
 
                     try {

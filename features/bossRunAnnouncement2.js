@@ -186,7 +186,6 @@ module.exports = {
                                 }
 
                                 if (signedNames.has('✅')) {
-                                    console.log('has')
                                     let tempArray = signedNames.get('✅');
                                     let tempIds = signedMembers.get('✅');
 
@@ -251,7 +250,6 @@ module.exports = {
                                 }
 
                                 if (signedNames.has('✅')) {
-                                    console.log('has')
                                     let tempArray = signedNames.get('✅');
                                     let tempIds = signedMembers.get('✅');
 
@@ -297,8 +295,6 @@ module.exports = {
                     if (editBool) {
                         message.edit({embed: embed});
                     }
-                    console.log(signedNames);
-                    console.log(signedMembers);
                 }
                 if (!reaction.message.guild) return;
 
@@ -399,7 +395,6 @@ module.exports = {
                 }
 
                 if (message.content.startsWith(".rm2")) {
-                    console.log(2 + ' ' + messageId);
                     let member = message.content.split(" ");
 
                     try {

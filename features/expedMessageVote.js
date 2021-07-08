@@ -90,9 +90,6 @@ module.exports = {
                             signedNames.set(reaction.emoji.name, userArray);
                             signedMembers.set(reaction.emoji.name, userIds);
                         }
-
-                        console.log(signedNames);
-                        console.log(signedMembers);
                     }
 
 
@@ -210,8 +207,6 @@ module.exports = {
                         message.edit({embed: embed});
                         signedMembers.set(reaction.emoji.name, userIds);
                     }
-                    console.log(signedNames);
-                    console.log(signedMembers);
                 }
             })
 
@@ -225,13 +220,11 @@ module.exports = {
                         max = emotes.emoji.name;
                     }
                 })
-                console.log(max + " " + maxCount)
 
                 editBool = false;
 
                 switch (max) {
                     case 'OnTime': {
-                        console.log("entered on time")
                         client.channels.cache.get('811435136615972891').send("Majority voted for On Time with a total of " + maxCount + " votes");
                         schedule.scheduleJob('alert-job', '0 * * * *', function() {
                             alertExpeds(signedMembers, 'OnTime', client)
@@ -241,7 +234,6 @@ module.exports = {
                     }
 
                     case '152': {
-                        console.log("entered on 15")
                         client.channels.cache.get('811435136615972891').send("Majority voted for :15 with a total of " + maxCount + " votes");
                         schedule.scheduleJob('alert-job', '15 * * * *', function() {
                             alertExpeds(signedMembers, '152', client)
@@ -251,7 +243,6 @@ module.exports = {
                     }
 
                     case '302': {
-                        console.log("entered on 30")
                         client.channels.cache.get('811435136615972891').send("Majority voted for :30 with a total of " + maxCount + " votes");
                         schedule.scheduleJob('alert-job', '30 * * * *', function() {
                             alertExpeds(signedMembers, '302', client)
@@ -261,7 +252,6 @@ module.exports = {
                     }
 
                     case '452': {
-                        console.log("entered on 45")
                         client.channels.cache.get('811435136615972891').send("Majority voted for :45 with a total of " + maxCount + " votes");
                         schedule.scheduleJob('alert-job', '45 * * * *', function() {
                             alertExpeds(signedMembers, '452', client)
@@ -271,7 +261,6 @@ module.exports = {
                     }
 
                     case 'Skip': {
-                        console.log("entered on skip")
                         client.channels.cache.get('811435136615972891').send("Everyone is skipping!! Bunch of noobs!")
                         break;
                     }

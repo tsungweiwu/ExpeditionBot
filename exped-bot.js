@@ -175,6 +175,8 @@ client.on('messageDelete', messageDelete => {
 
         let d = new Date(messageDelete.createdTimestamp);
         deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+
+        console.log(`Deleted Message - ${deletedTime} \nAuthor: ${deletedAuthor} \nMessage: ${deletedContent}`);
     }
 })
 
@@ -186,6 +188,8 @@ client.on('messageUpdate', messageUpdate => {
 
         let d = new Date(messageUpdate.createdTimestamp);
         updatedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+
+        console.log(`Updated Message - ${updatedTime} \nAuthor: ${updatedAuthor} \nMessage: ${updatedContent}`);
     }
 })
 

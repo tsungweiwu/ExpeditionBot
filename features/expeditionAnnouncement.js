@@ -80,8 +80,6 @@ module.exports = {
                             userArray.push(name);
                             signedNames.set(reaction.emoji.name, userArray);
                         }
-
-                        console.log(signedNames);
                     }
 
 
@@ -149,7 +147,6 @@ module.exports = {
                     if (editBool) {
                         message.edit({embed: embed});
                     }
-                    console.log(signedNames);
                 }
             })
 

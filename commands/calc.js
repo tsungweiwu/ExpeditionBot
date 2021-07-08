@@ -24,7 +24,6 @@ module.exports = {
 
         if (isNaN(timeEnd)) return message.reply("Invalid Input");
 
-        console.log(timeStart + " and " + timeEnd);
         let difference = timeEnd - timeStart;
 
         if (difference < 0) {
