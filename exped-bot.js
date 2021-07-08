@@ -168,6 +168,7 @@ client.on('message', message => {
 });
 
 client.on('messageDelete', messageDelete => {
+    if (messageDelete.author.bot) return;
     if (messageDelete.channel.guild.id === '472829226094166034') {
         deletedContent = messageDelete.content
         deletedAuthor = messageDelete.author
@@ -178,6 +179,7 @@ client.on('messageDelete', messageDelete => {
 })
 
 client.on('messageUpdate', messageUpdate => {
+    if (messageUpdate.author.bot) return;
     if (messageUpdate.channel.guild.id === '472829226094166034') {
         updatedContent = messageUpdate.content
         updatedAuthor = messageUpdate.author
