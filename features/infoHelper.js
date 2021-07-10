@@ -1,6 +1,6 @@
 module.exports = {
     info: function (message, infoMap, Discord) {
-        let item = infoMap.get(message.content);
+        let item = infoMap.get(message.content.toLowerCase());
         let output;
 
         if (item.type === 'image') {
