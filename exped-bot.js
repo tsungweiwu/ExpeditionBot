@@ -161,10 +161,6 @@ client.on('message', message => {
             return message.channel.send(err);
         })
     }
-
-    if (message.content.includes('smack')) {
-        return message.channel.send('https://cdn.discordapp.com/emojis/822693298640388147.gif?v=1');
-    }
 });
 
 client.on('messageDelete', messageDelete => {
