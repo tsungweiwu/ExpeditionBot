@@ -1,5 +1,6 @@
 module.exports = {
     info: function (message, infoMap, Discord) {
+        console.log(message.content.toLowerCase())
         let item = infoMap.get(message.content.toLowerCase());
         let output;
 

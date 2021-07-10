@@ -106,7 +106,7 @@ client.on('guildDelete', guild => {
 client.on('message', message => {
     if (message.author.bot) return;
 
-    if (infoMap.has(message.content)) {
+    if (infoMap.has(message.content.toLowerCase())) {
         infoHelper.info(message, infoMap, Discord);
     }
 
