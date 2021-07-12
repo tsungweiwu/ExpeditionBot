@@ -165,28 +165,27 @@ client.on('message', message => {
 
 client.on('messageDelete', messageDelete => {
     if (messageDelete.author.bot) return;
-    if (messageDelete.channel.guild.id === '472829226094166034') {
-        deletedContent = messageDelete.content
-        deletedAuthor = messageDelete.author
+    if (messageDelete.channel.guild.id !== '472829226094166034') return;
+    deletedContent = messageDelete.content
+    deletedAuthor = messageDelete.author
 
-        let d = new Date(messageDelete.createdTimestamp);
-        deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+    let d = new Date(messageDelete.createdTimestamp);
+    deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
 
-        console.log(`Deleted Message - ${deletedTime} \nAuthor: ${deletedAuthor} \nMessage: ${deletedContent}`);
-    }
+    console.log(`Deleted Message - ${deletedTime} \nAuthor: ${deletedAuthor} \nMessage: ${deletedContent}`);
+
 })
 
 client.on('messageUpdate', messageUpdate => {
     if (messageUpdate.author.bot) return;
-    if (messageUpdate.channel.guild.id === '472829226094166034') {
-        updatedContent = messageUpdate.content
-        updatedAuthor = messageUpdate.author
+    if (messageUpdate.channel.guild.id !== '472829226094166034') return;
+    updatedContent = messageUpdate.content
+    updatedAuthor = messageUpdate.author
 
-        let d = new Date(messageUpdate.createdTimestamp);
-        updatedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+    let d = new Date(messageUpdate.createdTimestamp);
+    updatedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
 
-        console.log(`Updated Message - ${updatedTime} \nAuthor: ${updatedAuthor} \nMessage: ${updatedContent}`);
-    }
+    console.log(`Updated Message - ${updatedTime} \nAuthor: ${updatedAuthor} \nMessage: ${updatedContent}`);
 })
 
 client.login(TOKEN);
