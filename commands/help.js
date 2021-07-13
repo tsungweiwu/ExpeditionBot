@@ -32,7 +32,7 @@ module.exports = {
                             name: ':notepad_spiral: Create RA Signup Sheet', value: '`.ra`', inline: true
                         },
                         {
-                            name: ':video_game: Fun', value: '`.nexon` `.ask` `.mock` `.roast` `.compliment` `.qod` `.tr` `.tt`', inline: true
+                            name: ':video_game: Fun', value: '`.nexon` `.ask` `.mock` `.roast` `.compliment` `.qod` `.tr` `.tt` `.define` `.ub`', inline: true
                         },
                         {
                             name: ':timer: AB Calculator', value: '`.calc 00:00`', inline: true
