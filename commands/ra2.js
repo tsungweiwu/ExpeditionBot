@@ -39,8 +39,8 @@ module.exports = {
         const filter = m => m.author.id === author.id;
         let title;
         let description;
-        let hour;
-        let minute;
+        let hour = 0;
+        let minute = 0;
 
         message.reply("Please enter a **title**.. Will expire in **20** seconds..");
         message.channel.awaitMessages(filter, {max: 1, time: 20000}).then(collected => {
@@ -82,7 +82,7 @@ module.exports = {
                         }
                     }
 
-                    message.reply("Confirm if **" + hour + ":" + minute + " "  + timeOfDay + " " + timeZone + "** is correct __(type yes or y to confirm)__.. Will expire in **10** seconds..");
+                    message.reply("Confirm if **" + time[0] + ":" + time[1] + " "  + timeOfDay + " " + timeZone + "** is correct __(type yes or y to confirm)__.. Will expire in **10** seconds..");
                     message.channel.awaitMessages(filter, {max: 1, time: 10000}).then(collected => {
                         if (collected.first().content.toLowerCase() === 'yes' || collected.first().content.toLowerCase() === 'y') {
                             message.reply("You have successfully scheduled the run");
