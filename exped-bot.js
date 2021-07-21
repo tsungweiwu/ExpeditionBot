@@ -164,6 +164,7 @@ client.on('message', message => {
 });
 
 client.on('messageDelete', messageDelete => {
+    console.log(messageDelete.author.bot)
     if (messageDelete.author.bot) return;
     if (messageDelete.channel.guild.id !== '472829226094166034') return;
     deletedContent = messageDelete.content
@@ -177,6 +178,7 @@ client.on('messageDelete', messageDelete => {
 })
 
 client.on('messageUpdate', messageUpdate => {
+    console.log(messageUpdate.author.bot)
     if (messageUpdate.author.bot) return;
     if (messageUpdate.channel.guild.id !== '472829226094166034') return;
     updatedContent = messageUpdate.content
