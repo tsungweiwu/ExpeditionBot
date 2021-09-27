@@ -111,40 +111,42 @@ client.on('message', message => {
     }
 
     if (message.content === '.snipe') {
-        if (message.channel.guild.id !== '472829226094166034' || message.channel.guild.id !== '474716101435981836') return;
-        if (deletedContent === '' || deletedAuthor === null) return message.channel.send('No Messages Found')
-        console.log(deletedTime)
-        message.channel.send({
-            embed: {
-                author: {
-                    name: deletedAuthor.username,
-                    icon_url: `https://cdn.discordapp.com/avatars/${deletedAuthor.id}/${deletedAuthor.avatar}.png?size=256`
-                },
-                description: deletedContent,
-                footer: {
-                    text: deletedTime
+        if (message.channel.guild.id === '472829226094166034' || message.channel.guild.id === '474716101435981836') {
+            if (deletedContent === '' || deletedAuthor === null) return message.channel.send('No Messages Found')
+            console.log(deletedTime)
+            message.channel.send({
+                embed: {
+                    author: {
+                        name: deletedAuthor.username,
+                        icon_url: `https://cdn.discordapp.com/avatars/${deletedAuthor.id}/${deletedAuthor.avatar}.png?size=256`
+                    },
+                    description: deletedContent,
+                    footer: {
+                        text: deletedTime
+                    }
                 }
-             }
-        }).then(r => {
-        })
+            }).then(r => {
+            })
+        }
     }
 
     if (message.content === '.edit') {
-        if (message.channel.guild.id !== '472829226094166034' || message.channel.guild.id !== '474716101435981836') return;
-        if (updatedContent === '' || updatedAuthor === null) return message.channel.send('No Messages Found')
-        message.channel.send({
-            embed: {
-                author: {
-                    name: updatedAuthor.username,
-                    icon_url: `https://cdn.discordapp.com/avatars/${updatedAuthor.id}/${updatedAuthor.avatar}.png?size=256`
-                },
-                description: updatedContent,
-                footer: {
-                    text: updatedTime
+        if (message.channel.guild.id === '472829226094166034' || message.channel.guild.id === '474716101435981836') {
+            if (updatedContent === '' || updatedAuthor === null) return message.channel.send('No Messages Found')
+            message.channel.send({
+                embed: {
+                    author: {
+                        name: updatedAuthor.username,
+                        icon_url: `https://cdn.discordapp.com/avatars/${updatedAuthor.id}/${updatedAuthor.avatar}.png?size=256`
+                    },
+                    description: updatedContent,
+                    footer: {
+                        text: updatedTime
+                    }
                 }
-            }
-        }).then(r => {
-        })
+            }).then(r => {
+            })
+        }
     }
 
     if (message.content.startsWith('.tt')) {
