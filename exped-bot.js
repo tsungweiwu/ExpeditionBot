@@ -13,6 +13,7 @@ const infoMap = require('./info.js');
 let infoHelper = require('./features/infoHelper');
 const schedule = require("./features/scheduleRules");
 
+// milk
 let deletedContent = '';
 let deletedAuthor;
 let deletedTime = '';
@@ -20,6 +21,15 @@ let deletedTime = '';
 let updatedContent = '';
 let updatedAuthor;
 let updatedTime = '';
+
+// kitsune
+let deletedContent2 = '';
+let deletedAuthor2;
+let deletedTime2 = '';
+
+let updatedContent2 = '';
+let updatedAuthor2;
+let updatedTime2 = '';
 
 client.on('ready', () => {
     new WOKCommands(client, {
@@ -128,6 +138,23 @@ client.on('message', message => {
             }).then(r => {
             })
         }
+        else if (message.channel.guild.id === '474716101435981836') {
+            if (deletedContent2 === '' || deletedAuthor2 === null) return message.channel.send('No Messages Found')
+            console.log(deletedTime2)
+            message.channel.send({
+                embed: {
+                    author: {
+                        name: deletedAuthor2.username,
+                        icon_url: `https://cdn.discordapp.com/avatars/${deletedAuthor2.id}/${deletedAuthor2.avatar}.png?size=256`
+                    },
+                    description: deletedContent2,
+                    footer: {
+                        text: deletedTime2
+                    }
+                }
+            }).then(r => {
+            })
+        }
     }
 
     if (message.content === '.edit') {
@@ -142,6 +169,22 @@ client.on('message', message => {
                     description: updatedContent,
                     footer: {
                         text: updatedTime
+                    }
+                }
+            }).then(r => {
+            })
+        }
+        else if (message.channel.guild.id === '474716101435981836') {
+            if (updatedContent2 === '' || updatedAuthor2 === null) return message.channel.send('No Messages Found')
+            message.channel.send({
+                embed: {
+                    author: {
+                        name: updatedAuthor2.username,
+                        icon_url: `https://cdn.discordapp.com/avatars/${updatedAuthor2.id}/${updatedAuthor2.avatar}.png?size=256`
+                    },
+                    description: updatedContent2,
+                    footer: {
+                        text: updatedTime2
                     }
                 }
             }).then(r => {
