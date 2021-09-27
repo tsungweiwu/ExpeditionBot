@@ -14,6 +14,7 @@ let infoHelper = require('./features/infoHelper');
 const schedule = require("./features/scheduleRules");
 
 // milk
+const milkId = '472829226094166034';
 let deletedContent = '';
 let deletedAuthor;
 let deletedTime = '';
@@ -23,6 +24,7 @@ let updatedAuthor;
 let updatedTime = '';
 
 // kitsune
+const kitsId = '474716101435981836';
 let deletedContent2 = '';
 let deletedAuthor2;
 let deletedTime2 = '';
@@ -121,7 +123,8 @@ client.on('message', message => {
     }
 
     if (message.content === '.snipe') {
-        if (message.channel.guild.id === '472829226094166034') {
+        // milk
+        if (message.channel.guild.id === milkId) {
             if (deletedContent === '' || deletedAuthor === null) return message.channel.send('No Messages Found')
             console.log(deletedTime)
             message.channel.send({
@@ -139,7 +142,8 @@ client.on('message', message => {
             })
         }
 
-        if (message.channel.guild.id === '474716101435981836') {
+        // kitsune
+        if (message.channel.guild.id === kitsId) {
             if (deletedContent2 === '' || deletedAuthor2 === null) return message.channel.send('No Messages Found')
             console.log(deletedTime2)
             message.channel.send({
@@ -159,7 +163,8 @@ client.on('message', message => {
     }
 
     if (message.content === '.edit') {
-        if (message.channel.guild.id === '472829226094166034') {
+        //milk
+        if (message.channel.guild.id === milkId) {
             if (updatedContent === '' || updatedAuthor === null) return message.channel.send('No Messages Found')
             message.channel.send({
                 embed: {
@@ -176,7 +181,8 @@ client.on('message', message => {
             })
         }
 
-        if (message.channel.guild.id === '474716101435981836') {
+        //kitsune
+        if (message.channel.guild.id === kitsId) {
             if (updatedContent2 === '' || updatedAuthor2 === null) return message.channel.send('No Messages Found')
             message.channel.send({
                 embed: {
@@ -213,28 +219,54 @@ client.on('message', message => {
 client.on('messageDelete', messageDelete => {
     console.log(messageDelete.author.bot)
     if (messageDelete.author.bot) return;
-    if (messageDelete.channel.guild.id !== '472829226094166034') return;
-    deletedContent = messageDelete.content
-    deletedAuthor = messageDelete.author
+    // milk
+    if (messageDelete.channel.guild.id === milkId) {
+        deletedContent = messageDelete.content
+        deletedAuthor = messageDelete.author
 
-    let d = new Date(messageDelete.createdTimestamp);
-    deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+        let d = new Date(messageDelete.createdTimestamp);
+        deletedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
 
-    console.log(`Deleted Message - ${deletedTime} \nAuthor: ${deletedAuthor} \nMessage: ${deletedContent}`);
+        console.log(`Deleted Message - ${deletedTime} \nAuthor: ${deletedAuthor} \nMessage: ${deletedContent}`);
+    }
+
+    // kitsune
+    if (messageDelete.channel.guild.id === kitsId) {
+        deletedContent2 = messageDelete.content
+        deletedAuthor2 = messageDelete.author
+
+        let d = new Date(messageDelete.createdTimestamp);
+        deletedTime2 = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+
+        console.log(`Deleted Message - ${deletedTime2} \nAuthor: ${deletedAuthor2} \nMessage: ${deletedContent2}`);
+    }
 
 })
 
 client.on('messageUpdate', messageUpdate => {
     console.log(messageUpdate.author.bot)
     if (messageUpdate.author.bot) return;
-    if (messageUpdate.channel.guild.id !== '472829226094166034') return;
-    updatedContent = messageUpdate.content
-    updatedAuthor = messageUpdate.author
+    // milk
+    if (messageUpdate.channel.guild.id === milkId) {
+        updatedContent = messageUpdate.content
+        updatedAuthor = messageUpdate.author
 
-    let d = new Date(messageUpdate.createdTimestamp);
-    updatedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+        let d = new Date(messageUpdate.createdTimestamp);
+        updatedTime = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
 
-    console.log(`Updated Message - ${updatedTime} \nAuthor: ${updatedAuthor} \nMessage: ${updatedContent}`);
+        console.log(`Updated Message - ${updatedTime} \nAuthor: ${updatedAuthor} \nMessage: ${updatedContent}`);
+    }
+
+    // kitsune
+    if (messageUpdate.channel.guild.id === kitsId) {
+        updatedContent2 = messageUpdate.content
+        updatedAuthor2 = messageUpdate.author
+
+        let d = new Date(messageUpdate.createdTimestamp);
+        updatedTime2 = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+
+        console.log(`Updated Message - ${updatedTime2} \nAuthor: ${updatedAuthor2} \nMessage: ${updatedContent2}`);
+    }
 })
 
 client.login(TOKEN);
