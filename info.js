@@ -9,6 +9,7 @@ const infoMap = new Map([
     ['.pba', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/541458491361984513/684303643905753112/unknown.png'}],
     ['.pba2', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/712890391011131394/838245030175047760/Screen_Shot_2021-05-01_at_10.45.52_PM.png'}],
     ['.link', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/555719232579698708/845371392886571058/image0.png'}],
+    ['.culvert', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/712292642733686846/769952604502491218/Buff_Pot_Checkliist.png'}],
     ['.nexon', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/519774750680154123/837032001722384425/image0.gif'}],
     ['.milk', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/attachments/590455709334765568/865408294084149298/milk2.png'}],
     ['.nya', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/683860867082616962.gif?v=1'}],

@@ -23,7 +23,7 @@ module.exports = {
                             name: ':dragon_face: Regular', value: '`.cygnus` `.pinkbean` `.horntail` `.zakum`', inline: true
                         },
                         {
-                            name: ':notebook_with_decorative_cover: Guides', value: '`.buffs` `.pabuffs` `.mabuffs` `.cubes` `.flames` `.statcap` `.hyper` `.pba` `.pba2` `.link`', inline: true
+                            name: ':notebook_with_decorative_cover: Guides', value: '`.buffs` `.pabuffs` `.mabuffs` `.cubes` `.flames` `.statcap` `.hyper` `.pba` `.pba2` `.link` `.culvert`', inline: true
                         },
                         {
                             name: ':watch: Get Current Server Time', value: '`.time`', inline: true
