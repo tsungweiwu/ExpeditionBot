@@ -138,7 +138,8 @@ client.on('message', message => {
             }).then(r => {
             })
         }
-        else if (message.channel.guild.id === '474716101435981836') {
+
+        if (message.channel.guild.id === '474716101435981836') {
             if (deletedContent2 === '' || deletedAuthor2 === null) return message.channel.send('No Messages Found')
             console.log(deletedTime2)
             message.channel.send({
@@ -174,7 +175,8 @@ client.on('message', message => {
             }).then(r => {
             })
         }
-        else if (message.channel.guild.id === '474716101435981836') {
+
+        if (message.channel.guild.id === '474716101435981836') {
             if (updatedContent2 === '' || updatedAuthor2 === null) return message.channel.send('No Messages Found')
             message.channel.send({
                 embed: {
