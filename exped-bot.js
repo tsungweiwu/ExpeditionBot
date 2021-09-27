@@ -111,7 +111,7 @@ client.on('message', message => {
     }
 
     if (message.content === '.snipe') {
-        if (message.channel.guild.id !== '472829226094166034') return;
+        if (message.channel.guild.id !== '472829226094166034' || message.channel.guild.id !== '474716101435981836') return;
         if (deletedContent === '' || deletedAuthor === null) return message.channel.send('No Messages Found')
         console.log(deletedTime)
         message.channel.send({
@@ -130,7 +130,7 @@ client.on('message', message => {
     }
 
     if (message.content === '.edit') {
-        if (message.channel.guild.id !== '472829226094166034') return;
+        if (message.channel.guild.id !== '472829226094166034' || message.channel.guild.id !== '474716101435981836') return;
         if (updatedContent === '' || updatedAuthor === null) return message.channel.send('No Messages Found')
         message.channel.send({
             embed: {

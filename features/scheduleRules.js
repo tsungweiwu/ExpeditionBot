@@ -2,20 +2,35 @@ let expeditionVote = require('./expedMessageVote.js');
 let expedition = require('./expeditionAnnouncement');
 const schedule = require('node-schedule')
 let fort = require('./fortAnnouncement');
+let fort2 = require('./fortAnnouncement2');
 
 module.exports = {
     fort: function(client, config) {
-        if (config.name !== "milk") return;
-        // fort
-        const fortRule = new schedule.RecurrenceRule();
-        fortRule.hour = 19;
-        fortRule.minute = 00;
-        fortRule.tz = 'Etc/GMT+8';
-        //50 12 * * *
-        const fortRace = schedule.scheduleJob(fortRule, function () {
-            fort.fortAnnounce("Guild Fort Race", client, config);
-        });
-        fortRace.schedule();
+        if (config.name === "milk") {
+            // fort
+            const fortRule = new schedule.RecurrenceRule();
+            fortRule.hour = 19;
+            fortRule.minute = 00;
+            fortRule.tz = 'Etc/GMT+8';
+            //50 12 * * *
+            const fortRace = schedule.scheduleJob(fortRule, function () {
+                fort.fortAnnounce("Guild Fort Race", client, config);
+            });
+            fortRace.schedule();
+        }
+
+        if (config.name === "MS-m: Kitsune Guild") {
+            // fort
+            const fortRule2 = new schedule.RecurrenceRule();
+            fortRule2.hour = 19;
+            fortRule2.minute = 00;
+            fortRule2.tz = 'Etc/GMT+8';
+            //50 12 * * *
+            const fortRace2 = schedule.scheduleJob(fortRule2, function () {
+                fort2.fortAnnounce("Guild Fort Race", client, config);
+            });
+            fortRace2.schedule();
+        }
     },
     morning: function(client, config) {
         // morning
