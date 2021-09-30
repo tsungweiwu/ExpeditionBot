@@ -4,7 +4,7 @@ module.exports = {
     category: 'Fun',
     callback: ({ message }) => {
         let channel = message.channel; // <-- your pre-filled channel variable
-        let phrase = message.content.substr(3);
+        let phrase = message.content.substr(4);
         let string = '';
 
         ud.define(phrase, (error, results) => {
