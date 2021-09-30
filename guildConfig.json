@@ -14,18 +14,18 @@
         "isEvening": false,
         "isBonus": false
     },
-    "482873002124378113": {
-        "name": "KnightRiders",
-        "channelId": "519774750680154123",
-        "fortChannelId": "519774750680154123",
-        "raChannelId": "790451126956064778",
-        "spamChannelId": "",
-        "mentions": "703722009749880942",
-        "fortMention": "584792254112071681",
+    "474716101435981836": {
+        "name": "MS-m: Kitsune Guild",
+        "channelId": "",
+        "fortChannelId": "487116362083205121",
+        "raChannelId": "771927719885799455",
+        "spamChannelId": "779258528551403531",
+        "mentions": "",
+        "fortMention": "475529514982572032",
         "isTimeVote": false,
         "job1": {},
         "job2": {},
-        "isMorning": true,
+        "isMorning": false,
         "isEvening": false,
         "isBonus": false
     },
@@ -58,20 +58,5 @@
         "isMorning": true,
         "isEvening": true,
         "isBonus": true
-    },
-    "824653099817369671": {
-        "name": "peacherino's server",
-        "channelId": "",
-        "fortChannelId": "",
-        "raChannelId": "838131416767135745",
-        "spamChannelId": "838131509788803122",
-        "mentions": "",
-        "fortMention": "",
-        "isTimeVote": false,
-        "job1": {},
-        "job2": {},
-        "isMorning": false,
-        "isEvening": false,
-        "isBonus": false
     }
 }
