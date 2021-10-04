@@ -32,6 +32,9 @@ const infoMap = new Map([
     ['.throw', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/743080534862725240.gif?v=1'}],
     ['.imi', {'type' : 'image', 'img' : 'https://cdn.discordapp.com/emojis/825605846515712002.png?v=1'}],
     ['.doubt', {'type' : 'image', 'img' : 'https://media1.tenor.com/images/6a0bddfdc7168eb4218ee25465c8bbbc/tenor.gif?itemid=19259237'}],
+    ['.yaas', {'type' : 'image', 'img' : 'https://c.tenor.com/UVPl_GBDkSAAAAAi/yas-yeah.gif'}],
+    ['.erml1', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/875230011609714720/878055437520494642/text-3.gif'}],
+    ['.erml2', {'type' : 'image', 'img' : 'https://media.discordapp.net/attachments/875230011609714720/877933480275746816/text-1.gif'}],
     ['.magnus', {'type' : 'embed', embed: {
             image: {
                 url: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/884d5e19-e82d-49bd-acec-58e56eafbb7a/d6f6qjv-55887e39-7840-44f3-ab39-ebbb3c85c0be.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg4NGQ1ZTE5LWU4MmQtNDliZC1hY2VjLTU4ZTU2ZWFmYmI3YVwvZDZmNnFqdi01NTg4N2UzOS03ODQwLTQ0ZjMtYWIzOS1lYmJiM2M4NWMwYmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.r9Unu4aeWJOTKk3tnkc5lPxUk4f7zP9hVIbJ4u5EHME'
