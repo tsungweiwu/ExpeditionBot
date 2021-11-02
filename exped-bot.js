@@ -33,6 +33,16 @@ let updatedContent2 = '';
 let updatedAuthor2;
 let updatedTime2 = '';
 
+// degen
+const degenId = '861020088681365544';
+let deletedContent3 = '';
+let deletedAuthor3;
+let deletedTime3 = '';
+
+let updatedContent3 = '';
+let updatedAuthor3;
+let updatedTime3 = '';
+
 client.on('ready', () => {
     new WOKCommands(client, {
         commandsDir: 'commands',
@@ -160,6 +170,26 @@ client.on('message', message => {
             }).then(r => {
             })
         }
+
+        // degen
+        if (message.channel.guild.id === degenId) {
+            if (deletedContent3 === '' || deletedAuthor3 === null) return message.channel.send('No Messages Found')
+            console.log(deletedTime3)
+            message.channel.send({
+                embed: {
+                    author: {
+                        name: deletedAuthor3.username,
+                        icon_url: `https://cdn.discordapp.com/avatars/${deletedAuthor3.id}/${deletedAuthor3.avatar}.png?size=256`
+                    },
+                    description: deletedContent3,
+                    footer: {
+                        text: deletedTime3
+                    }
+                }
+            }).then(r => {
+            })
+        }
+
     }
 
     if (message.content === '.edit') {
@@ -198,6 +228,25 @@ client.on('message', message => {
             }).then(r => {
             })
         }
+
+        //degen
+        if (message.channel.guild.id === degenId) {
+            if (updatedContent3 === '' || updatedAuthor3 === null) return message.channel.send('No Messages Found')
+            message.channel.send({
+                embed: {
+                    author: {
+                        name: updatedAuthor3.username,
+                        icon_url: `https://cdn.discordapp.com/avatars/${updatedAuthor3.id}/${updatedAuthor3.avatar}.png?size=256`
+                    },
+                    description: updatedContent3,
+                    footer: {
+                        text: updatedTime3
+                    }
+                }
+            }).then(r => {
+            })
+        }
+
     }
 
     if (message.content.startsWith('.tt')) {
@@ -241,6 +290,17 @@ client.on('messageDelete', messageDelete => {
         console.log(`Deleted Message - ${deletedTime2} \nAuthor: ${deletedAuthor2} \nMessage: ${deletedContent2}`);
     }
 
+    // degen
+    if (messageDelete.channel.guild.id === degenId) {
+        deletedContent3 = messageDelete.content
+        deletedAuthor3 = messageDelete.author
+
+        let d = new Date(messageDelete.createdTimestamp);
+        deletedTime3 = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+
+        console.log(`Deleted Message - ${deletedTime3} \nAuthor: ${deletedAuthor3} \nMessage: ${deletedContent3}`);
+    }
+
 })
 
 client.on('messageUpdate', messageUpdate => {
@@ -266,6 +326,17 @@ client.on('messageUpdate', messageUpdate => {
         updatedTime2 = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
 
         console.log(`Updated Message - ${updatedTime2} \nAuthor: ${updatedAuthor2} \nMessage: ${updatedContent2}`);
+    }
+
+    // degen
+    if (messageUpdate.channel.guild.id === degenId) {
+        updatedContent3 = messageUpdate.content
+        updatedAuthor3 = messageUpdate.author
+
+        let d = new Date(messageUpdate.createdTimestamp);
+        updatedTime3 = d.toDateString() + ", " + d.getHours() + ":" + d.getMinutes();
+
+        console.log(`Updated Message - ${updatedTime3} \nAuthor: ${updatedAuthor3} \nMessage: ${updatedContent3}`);
     }
 })
 
