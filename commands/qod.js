@@ -16,14 +16,13 @@ module.exports = {
             if (!message.author.bot) {
                 // The author of the last message wasn't a bot
                 return channel.send({
-                    embed: {
+                    embeds: [{
                         footer: {
                             text: "- " + body.contents.quotes[0].author + ", " + body.contents.quotes[0].date
                         },
                         title: body.contents.quotes[0].title,
-                        description: body.contents.quotes[0].quote,
-                        color: '#FFA500'
-                    }
+                        description: body.contents.quotes[0].quote
+                    }]
                 });
             }
         });

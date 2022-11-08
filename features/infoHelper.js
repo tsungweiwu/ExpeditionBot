@@ -1,14 +1,16 @@
+const { MessageAttachment } = require("discord.js")
+
 module.exports = {
-    info: function (message, infoMap, Discord) {
+    info: function (message, infoMap) {
         console.log(message.content.toLowerCase())
         let item = infoMap.get(message.content.toLowerCase());
         let output;
 
         if (item.type === 'image') {
-            output = new Discord.MessageAttachment(item.img);
+            output = {files: [{attachment: item.img}]};
         }
         else if (item.type === 'embed') {
-            output = {embed: item.embed};
+            output = {embeds: [item.embed]};
         }
 
         try {

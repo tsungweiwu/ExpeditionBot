@@ -25,7 +25,7 @@ module.exports = {
 
     callback: ({ args }) => {
         try {
-            let serverTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Etc/GMT+8"}));
+            let serverTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Etc/GMT-2"}));
             // hours as (HH) format
             let hours = ("0" + serverTime.getHours()).slice(-2);
             // minutes as (mm) format
